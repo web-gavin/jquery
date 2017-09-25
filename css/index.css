@@ -1,0 +1,393 @@
+html, body {
+	min-height: 100%;
+}
+.wrapper {
+	min-height: 100%;
+	position: relative;
+	overflow: hidden
+}
+
+/*header*/
+.header {
+	position: relative;
+	z-index: 1030;
+	height: 50px;
+}
+.header .navbar {
+	position: absolute;
+	right: 0;
+	top: 0;
+	height: 50px;
+}
+
+/*logo*/
+.header .logo {
+	float: left;
+	width: 160px;
+	height: 32px;
+	padding: 9px 10px;
+	font-size: 20px;
+	overflow: hidden;
+    white-space: nowrap;
+}
+.header .logo .logo-lg {
+	display: block;
+}
+.header .logo .logo-lg strong {
+	font-size: 14px;
+	padding-left: 6px;
+}
+.header .logo .logo-mini {
+	display: none;
+}
+
+/*nav bar*/
+.navbar .navbar-menu {
+	float: left;
+}
+.navbar .navbar-menu .navbar-item {
+	position: relative;
+	float: left;
+}
+.navbar .navbar-menu .navbar-item .navbar-btn {
+    display: block;
+    height: 50px;
+    padding: 0 10px;
+    font-size: 14px;
+    line-height: 50px;
+}
+
+/*side bar*/
+.sidebar {
+    width: 180px;
+    position: fixed;
+    top: 50px;
+    bottom: 0px;
+    z-index: 102;
+    overflow-x: hidden;
+}
+.sidebar .sidebar-content {
+    width: 200px;
+    height: 100%;
+    overflow: auto;
+    overflow-x: hidden;
+}
+.sidebar .sidebar-inner {
+    width: 180px;
+}
+.sidebar .sidebar-toggle {
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+
+/*side bar menu*/
+.sidebar-menu {
+    white-space: nowrap;
+    overflow: hidden
+}
+.sidebar-menu:hover {
+    overflow: visible
+}
+.sidebar-menu > li {
+    position: relative;
+}
+.sidebar-menu > li > a {
+    display: block;
+    padding: 12px 5px 12px 15px;
+    font-size: 14px;
+}
+.sidebar-menu li > a {
+    position: relative
+}
+.sidebar-menu li > a > .pull-right {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    margin-top: -9px;
+    -webkit-transition: all linear .2s;
+    -moz-transition: all linear .2s;
+    -ms-transition: all linear .2s;
+    -o-transition: all linear .2s;
+    transition: all linear .2s
+}
+.sidebar-menu > li.active > a > .pull-right {
+    -webkit-transform:rotate(90deg);
+    -moz-transform:rotate(90deg);
+    -ms-transform:rotate(90deg);
+    -o-transform:rotate(90deg);
+    transform:rotate(90deg);
+}
+.sidebar-menu .treeview-menu {
+    display: none;
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.sidebar-menu li.active > .treeview-menu {
+    display: block;
+}
+.sidebar-menu .treeview-menu .treeview-menu {
+    padding-left: 20px
+}
+.sidebar-menu .treeview-menu > li {
+    line-height: 26px;
+}
+.sidebar-menu .treeview-menu > li > a {
+    display: block;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px
+}
+
+/*mini sidebar*/
+.sidebar-mini .header .logo {
+    width: 30px
+}
+.sidebar-mini .header .logo .logo-lg {
+    display: none;
+}
+.sidebar-mini .header .logo .logo-mini {
+    display: block;
+}
+
+.sidebar-mini .sidebar, .sidebar-mini .sidebar .sidebar-content {
+    overflow-x: visible;
+    overflow: visible;
+}
+.sidebar-mini .sidebar, .sidebar-mini .sidebar .sidebar-inner, .sidebar-mini .sidebar .toogle-swatch, .sidebar-mini .sidebar .sidebar-menu {
+    width: 50px !important;
+}
+.sidebar-mini .sidebar .sidebar-content {
+    width: 70px !important;
+}
+.sidebar-mini .sidebar-menu > li > a {
+    border-left-width: 0 !important;
+}
+.sidebar-mini .sidebar-menu > li {
+    position: relative
+}
+
+.sidebar-mini .sidebar-menu > li:hover > .treeview-menu, .sidebar-mini .sidebar-menu > li:hover > a > span {
+    display: block !important;
+    position: absolute;
+    width: 180px;
+    left: 50px
+}
+.sidebar-mini .sidebar-menu>li:hover>.treeview-menu {
+    top: 46px;
+}
+.sidebar-mini .sidebar-menu > li:hover > a > span {
+    top: 0;
+    line-height: 22px;
+    padding: 12px 0 12px 20px;
+    background-color: inherit
+}
+.sidebar-mini .sidebar-menu > li > a > span {
+    border-top-right-radius: 4px
+}
+.sidebar-mini .sidebar-menu .treeview-menu > li > a {
+    padding-left: 0;
+}
+.sidebar-mini .sidebar-menu > li > .treeview-menu {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom-right-radius: 4px
+}
+.sidebar-mini .sidebar-menu > li > a > span, .sidebar-mini .sidebar-menu > li > .treeview-menu, .sidebar-mini .sidebar-menu > li > a > .pull-right {
+    display: none !important;
+}
+
+.sidebar-mini .container {
+    margin-left: 50px!important;
+}
+
+/*container*/
+.container {
+    margin-left: 180px;
+}
+.container {
+    min-height: 100%;
+    background-color: #ecf0f5;
+    z-index: 800;
+}
+
+/*notice*/
+.notice {
+    position: relative;
+    height: 30px;
+    overflow: hidden;
+    background: #fff;
+}
+.notice .notice-title {
+	float: left;
+    line-height: 30px;
+    margin-left: 40px;
+    margin-right: 8px;
+    font-weight: 600;
+}
+.notice .notice-list li .date {
+    color: #999999;
+    margin-right: 6px;
+}
+.notice .notice-list li {
+    float: left;
+    list-style: none;
+    margin-right: 20px;
+    line-height: 30px;
+}
+.notice .notice-list li a span { position: relative; left: -50px; background: #fff;}
+
+/*tabs*/
+.container .content-tabs {
+	position: relative;
+    min-width: 680px;
+	height: 40px;
+	line-height: 40px;
+	margin-top: 8px;
+	background: #fafafa;
+	border-bottom: solid 2px #222d32;
+	font-size: 12px;
+}
+.container .content-tabs .roll-nav, .page-tabs-list {
+	position: absolute;
+	top: 0;
+	z-index: 2;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	color: #475059;
+}
+.container .content-tabs .roll-left {
+    left: 0;
+    border-right: solid 1px #ddd
+}
+.container .content-tabs .roll-right {
+    right: 0;
+    border-left: solid 1px #ddd
+}
+.container .content-tabs button {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    outline: none;
+    cursor: pointer;
+    background: #fff;
+    border: 0;
+}
+.container .content-tabs button:hover {
+    background: #fafafa
+}
+.container .content-tabs button i {
+    color: #999;
+}
+.container .content-tabs .page-tabs {
+    width: 100000px;
+    height: 40px;
+    margin-left: 40px;
+    overflow: hidden
+}
+.container .content-tabs .page-tabs .page-tabs-content {
+    float: left
+}
+.container .content-tabs .page-tabs a {
+    display: block;
+    float: left;
+    padding: 0 15px;
+    padding-right: 8px;
+    border-right: solid 0px #ddd;
+    color: #475059;
+}
+.container .content-tabs .page-tabs a:first-child {
+    padding-right: 15px;
+}
+.container .content-tabs .page-tabs a.active {
+    border-right: solid 1px #2c3e50;
+    background: #222d32;
+    color: #fff;
+}
+.container .content-tabs .page-tabs a i {
+    position: relative;
+    right: 0px;
+    top: 0;
+    color: #999;
+}
+.container .content-tabs .page-tabs a i:hover {
+    color: #c00 !important;
+}
+.container .content-tabs .page-tabs a.active i:hover {
+    color: #fff !important;
+}
+.container .content-tabs .roll-right.tabRight {
+    right: 91px
+}
+.container .content-tabs .roll-right.btn-group {
+    width: 80px;
+    padding: 0 10px 0 0;
+}
+.container .content-tabs .roll-right.btn-group button {
+    width: 92px
+}
+.container .content-tabs .roll-right.tabExit {
+    width: 40px;
+    height: 39px;
+    background: #fff;
+    outline: 0
+}
+.container .content-tabs .dropdown-menu {
+    width: 118px;
+}
+.container .content-iframe { min-width: 680px; }
+
+/*dropdown*/
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 1000;
+    width: 100%;
+    padding: 5px 0;
+    text-align: left;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .2);
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 6px 12px rgba(0, 0, 0, .2);
+    -ms-box-shadow: 0 6px 12px rgba(0, 0, 0, .2);
+    -o-box-shadow: 0 6px 12px rgba(0, 0, 0, .2);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .2);
+}
+.dropdown-menu li a {
+    display: block;
+    padding: 5px 15px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #333;
+    white-space: nowrap;
+    cursor: pointer;
+    color: #777;
+    font-size: 12px;
+}
+.dropdown-menu li a:hover {
+	background-color: #e1e3e9;
+	color: #333
+}
+.dropdown-menu .divider {
+	height: 1px;
+	margin: 5px 0;
+	overflow: hidden;
+	background-color: #eee;
+}
+
+.navbar .navbar-menu .navbar-item a:hover, .container .content-tabs .page-tabs a, .dropdown-menu li a, .sidebar-menu li a {
+    text-decoration: none;
+}
+
+
+
+
+
+

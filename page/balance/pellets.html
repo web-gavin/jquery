@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>上品折扣后台管理</title>
+<link rel="stylesheet" href="../../css/reset.css">
+<link rel="stylesheet" href="../../css/chosen.css">
+<link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="../../css/skins.css">
+</head>
+
+<body>
+	<div class="main-page">
+		<div class="mt clearfix">
+			<div class="search-form">
+			    <form class="form-inline">
+					<div class="form-group">
+						<select class="select form-control drop-select" data-placeholder="结算方法">
+							<option value="0"></option>
+							<option value="1">上品公司结算单</option>
+							<option value="2">上品科技公司费用</option>
+							<option value="3">上品综合管理费用</option>
+							<option value="4">杭州笕桥结算单</option>
+							<option value="5">杭州笕桥综合管理费</option>
+							<option value="6">非结算管理费用</option>
+						</select>
+					</div>
+	                <div class="form-group">
+		                <select class="select form-control drop-select" data-placeholder="门店名称">
+							<option value="0"></option>
+							<option value="1">1001_王府井店</option>
+							<option value="2">1002_朝阳门店</option>
+							<option value="3">1003_三里河店</option>
+							<option value="4">1004_亚运村店</option>
+							<option value="5">1005_来广营店</option>
+							<option value="6">1006_中关村店</option>
+							<option value="7">1007_五棵松店</option>
+							<option value="8">1008_回龙观店</option>
+							<option value="9">1009_草桥MALL</option>
+		                </select>
+	                </div>
+		            <div class="form-group">
+		                <select class="select form-control drop-select" data-placeholder="供应商名称">
+						    <option value="0"></option>
+							<option value="1">A100001_山大盛德门店庆</option>
+							<option value="2">A100002_山大盛德</option>
+							<option value="3">A100003_山大盛德</option>
+							<option value="4">A100004_山大盛德</option>
+							<option value="5">A100005_山大盛德</option>
+							<option value="6">A100006_没舛酷察多大事</option>
+							<option value="7">A100007_山大盛德</option>
+							<option value="8">A100008_山大盛德</option>
+							<option value="9">A100009_山大盛德</option>
+							<option value="10">A100010_山大盛德</option>
+		                </select>
+		            </div>
+	                <div class="form-group">
+		                <select class="select form-control drop-select" data-placeholder="全部年份">
+							<option value="0"></option>
+							<option value="1">2016年</option>
+							<option value="2">2015年</option>
+							<option value="3">2014年</option>
+							<option value="4">2013年</option>
+							<option value="5">2012年</option>
+		                </select>
+	                </div>
+	                <div class="form-group">
+		                <select class="select form-control drop-select" data-placeholder="全部月份">
+							<option value="0"></option>
+							<option value="1">1月</option>
+							<option value="2">2月</option>
+							<option value="3">3月</option>
+							<option value="4">4月</option>
+							<option value="5">5月</option>
+							<option value="6">6月</option>
+							<option value="7">7月</option>
+							<option value="8">8月</option>
+							<option value="9">9月</option>
+							<option value="10">10月</option>
+							<option value="11">11月</option>
+							<option value="12">12月</option>
+		                </select>
+	                </div>
+		            <div class="form-group">
+		                <select class="select form-control drop-select" data-placeholder="结算标志">
+							<option value="0"></option>
+							<option value="1">准许结算</option>
+							<option value="2">等待纸质合同</option>
+		                </select>
+		            </div>
+		            <div class="form-group">
+		                <button type="button" class="btn btn-default">查询</button>
+		            </div>
+				</form>
+			</div>
+		</div>
+		<div class="mt clearfix">
+	        <table class="table table-hover">
+	            <thead>
+		            <tr>
+		                <th><input type="checkbox"></th>
+		                <th>年</th>
+		                <th>月</th>
+		                <th>供应商编号</th>
+		                <th>供应商名称</th>
+		                <th>门店编号</th>
+		                <th>门店名称</th>
+		                <th>供应商属性</th>
+		                <th>收款金额</th>
+		                <th>费用代码</th>
+		                <th>费用名称</th>
+		                <th>费用金额</th>
+		                <th>锁定标识</th>
+		            </tr>
+	            </thead>
+	            <tbody>
+	            	<tr>
+	            		<td><input type="checkbox" name="ckbox"></td>
+	            		<td>2016</td>
+	            		<td>8</td>
+	            		<td>0000100468</td>
+	            		<td>北京元盛宝国际贸易有限公司</td>
+	            		<td>1001</td>
+	            		<td>王府井店</td>
+	            		<td>联营业务</td>
+	            		<td>25799.75</td>
+	            		<td>01</td>
+	            		<td>内卡费用</td>
+	            		<td>258.00</td>
+	            		<td>X</td>
+	            	</tr>
+	            </tbody>
+	            <tfoot>
+		            <tr>
+		                <td colspan="12">
+		                    <div class="pull-right page-box">
+		                        <div class="pagination-info">共有1条，每页显示：20条</div>
+		                        <ul class="pagination">
+		                        	<li class="disabled" page-index="1"><a>«</a></li>
+		                        	<li class="disabled" page-index="0"><a>‹</a></li>
+		                        	<li class="active" page-index="1"><a>1</a></li>
+		                        	<li page-index="2"><a>2</a></li>
+		                        	<li page-index="3"><a>3</a></li>
+		                        	<li page-index="4"><a>4</a></li>
+		                        	<li class="disabled" page-index="2"><a>›</a></li>
+		                        	<li class="disabled" page-index="1"><a>»</a></li>
+		                        </ul>
+		                        <div class="pagination-goto">
+		                            <input type="text" class="ipt form-control" id="gotoPageNo">
+		                            <button type="button" class="btn btn-default" id="goBtn">GO</button>
+		                            <input type="hidden" id="totalCount" name="totalCount" value="1">
+		                        </div>
+		                    </div>
+		                </td>
+		            </tr>
+	            </tfoot>
+	        </table>
+		</div>
+		<div class="mt clearfix">
+			<div class="page-tip">
+				<b>温馨提示：</b>
+				<p>• 原模板中“色系”列，不再需要填写；</p>
+				<p>• 原模板中尺码填写有三列“国标尺码、企业尺码1、企业尺码2”，现只保留一列“尺码”列。填写规则要认真查看供应商主数据采集模板中“主数据模板录入规则”哦。</p>
+				<p>• 请您每次填写新增货品信息时，一定要在供应商服务平台右上角“资料下载”中下载最新版供应商主数据采集模板填写。</p>
+			</div>
+		</div>
+		<div class="no-data-info"><i class="fa"></i><span class="ng-binding">没有查询到符合条件的结果，请尝试更改关键词或其它选项</span></div>
+	</div>
+<script src="../../js/jquery-1.8.3.min.js"></script>
+<script src="../../js/jquery.placeholder.min.js"></script>
+<script src="../../js/jquery.chosen.min.js"></script>
+<script src="../../js/layer/layer.js"></script>
+<script src="../../js/laydate/laydate.js"></script>
+<script src="../../js/main.js"></script>
+<script>
+//编辑
+function modifyFunc(trID){
+	layer.open({
+		type: 1,
+		btn:['保存','取消'],
+		title: '修改供应商信息',
+		shade: 0.6,
+		moveType: 1,
+		shift: -1,
+		content:'<div class="form-view alert-form-view">'+
+				'<div class="form-group">'+
+					'<label class="label"><span class="text-danger">* </span>供应商名称：</label>'+
+					'<div class="row">'+
+					'<input type="text" size="30" class="ipt form-control" value="测试北京供应商">'+
+					'<span class="help-block"></span><!-- error tips -->'+
+					'</div>'+
+				'</div>'+
+				'<div class="form-group">'+
+					'<label class="label"><span class="text-danger">* </span>地址：</label>'+
+					'<div class="row">'+
+					'<input type="text" size="30" class="ipt form-control" value="北京市">'+
+					'<span class="help-block"></span><!-- error tips -->'+
+					'</div>'+
+				'</div>'+
+				'<div class="form-group">'+
+					'<label class="label">联系方式：</label>'+
+					'<div class="row">'+
+					'<input type="text" size="30" class="ipt form-control" value="13888888888">'+
+					'<span class="help-block"></span><!-- error tips -->'+
+					'</div>'+
+				'</div>'+
+				'<div class="form-group">'+
+					'<label class="label">公司税号：</label>'+
+					'<div class="row">'+
+					'<input type="text" size="30" class="ipt form-control" value="3502202000000001">'+
+					'<span class="help-block"></span><!-- error tips -->'+
+					'</div>'+
+				'</div>'+
+			'</div>',
+		yes: function(index, layero){
+		    layer.msg('修改成功');
+		    layer.close(index);
+		}
+	});
+}
+</script>
+</body>
+</html>

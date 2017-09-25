@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>上品折扣后台管理</title>
+<link rel="stylesheet" href="../../css/reset.css">
+<link rel="stylesheet" href="../../css/chosen.css">
+<link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../css/skins.css">
+</head>
+
+<body>
+<div class="main-page">
+	<div class="btn-group">
+		<a href="javascript:addFunc();" class="btn btn-primary">添加费率</a>
+	</div>
+
+	<div class="mt clearfix">
+		<div class="search-form pull-left">
+		    <form class="form-inline">
+	            <div class="form-group">
+	                <select class="select form-control drop-select" data-placeholder="门店名称">
+						<option value="0"></option>
+						<option value="1">1001_新亚奥旗舰店</option>
+						<option value="2">1002_五棵松店</option>
+						<option value="3">1003_草桥店</option>
+						<option value="4">1004_回龙观店</option>
+						<option value="5">1005_王府井店</option>
+						<option value="6">1006_中关村店</option>
+	                </select>
+	            </div>
+	            <div class="form-group">
+	                <select class="select form-control drop-select" data-placeholder="供应商名称">
+					    <option value="0"></option>
+						<option value="1">A100001_山大盛德门店庆</option>
+						<option value="2">A100002_山大盛德</option>
+						<option value="3">A100003_山大盛德</option>
+						<option value="4">A100004_山大盛德</option>
+						<option value="5">A100005_山大盛德</option>
+						<option value="6">A100006_没舛酷察多大事</option>
+						<option value="7">A100007_山大盛德</option>
+						<option value="8">A100008_山大盛德</option>
+						<option value="9">A100009_山大盛德</option>
+						<option value="10">A100010_山大盛德</option>
+	                </select>
+	            </div>
+	            <div class="form-group">
+	                <button type="button" class="btn btn-default">查询</button>
+	                <button onclick="resetFilter()" type="button" class="btn btn-default">重置</button>
+	            </div>
+			</form>
+		</div>
+	</div>
+	<div class="mt clearfix">
+        <table class="table table-hover">
+            <thead>
+	            <tr>
+	                <th>门店编码</th>
+	                <th>供应商编码</th>
+	                <th>供应商名称</th>
+	                <th>费用编码</th>
+	                <th>费用编码描述</th>
+	                <th>费率</th>
+	                <th>开始日期</th>
+	                <th>结束日期</th>
+	                <th class="text-right">操作</th>
+	            </tr>
+            </thead>
+            <tbody>
+            	<tr>
+            		<td>1002</td>
+            		<td>200001</td>
+            		<td>北京测试供应商1</td>
+            		<td>0201</td>
+            		<td>内卡费用</td>
+            		<td>2</td>
+            		<td>2016-01-02</td>
+            		<td>2020-12-31</td>
+            		<td class="text-right"><a href="javascript:modifyFunc(200001)">修改</a></td>
+            	</tr>
+            	<tr>
+            		<td>1002</td>
+            		<td>200002</td>
+            		<td>北京测试供应商2</td>
+            		<td>0302</td>
+            		<td>外卡费用</td>
+            		<td>4</td>
+            		<td>2016-01-02</td>
+            		<td>2020-12-31</td>
+            		<td class="text-right"><a href="javascript:modifyFunc(200002)">修改</a></td>
+            	</tr>
+            	<tr>
+            		<td>1002</td>
+            		<td>200003</td>
+            		<td>北京测试供应商3</td>
+            		<td>0301</td>
+            		<td>储值卡费用</td>
+            		<td>3</td>
+            		<td>2016-01-02</td>
+            		<td>2020-12-31</td>
+            		<td class="text-right"><a href="javascript:modifyFunc(200003)">修改</a></td>
+            	</tr>
+            </tbody>
+            <tfoot>
+	            <tr>
+	                <td colspan="9">
+	                    <div class="pull-left">
+                            <button type="button" class="btn btn-default">全部导出</button>
+	                    </div>
+	                    <div class="pull-right page-box">
+	                        <div class="pagination-info">共有1条，每页显示：20条</div>
+	                        <ul class="pagination">
+	                        	<li class="disabled" page-index="1"><a>«</a></li>
+	                        	<li class="disabled" page-index="0"><a>‹</a></li>
+	                        	<li class="active" page-index="1"><a>1</a></li>
+	                        	<li page-index="2"><a>2</a></li>
+	                        	<li page-index="3"><a>3</a></li>
+	                        	<li page-index="4"><a>4</a></li>
+	                        	<li class="disabled" page-index="2"><a>›</a></li>
+	                        	<li class="disabled" page-index="1"><a>»</a></li>
+	                        </ul>
+	                        <div class="pagination-goto">
+	                            <input type="text" class="ipt form-control" id="gotoPageNo">
+	                            <button type="button" class="btn btn-default" id="goBtn">GO</button>
+	                            <input type="hidden" id="totalCount" name="totalCount" value="100">
+	                        </div>
+	                    </div>
+	                </td>
+	            </tr>
+            </tfoot>
+        </table>
+	</div>
+	<div class="mt clearfix">
+		<div class="page-tip">
+			<b>温馨提示：</b>
+			<p>• 原模板中“色系”列，不再需要填写；</p>
+			<p>• 原模板中尺码填写有三列“国标尺码、企业尺码1、企业尺码2”，现只保留一列“尺码”列。填写规则要认真查看供应商主数据采集模板中“主数据模板录入规则”哦。</p>
+			<p>• 请您每次填写新增货品信息时，一定要在供应商服务平台右上角“资料下载”中下载最新版供应商主数据采集模板填写。</p>
+		</div>
+	</div>
+	<div class="no-data-info" style="display:none"><i class="fa"></i><span class="ng-binding">没有查询到符合条件的结果，请尝试更改关键词或其它选项</span></div><!-- 当没有查询结果时显示 -->
+</div>
+<script src="../../js/jquery-1.8.3.min.js"></script>
+<script src="../../js/jquery.chosen.min.js"></script>
+<script src="../../js/layer/layer.js"></script>
+<script src="../../js/laydate/laydate.js"></script>
+<script src="../../js/main.js"></script>
+<script>
+//添加
+function addFunc(){
+	layer.open({
+		type: 1,
+		btn:['确定','取消'],
+		title: '添加费率',
+		shade: 0.6,
+		moveType: 1,
+		shift: -1,
+		content:'<div class="form-view alert-form-view">'+
+					'<div class="form-group">'+
+						'<label class="label"><span class="text-danger">* </span>门店编码：</label>'+
+						'<div class="row">'+
+						'<select class="select form-control"><option value="1">1002_五棵松店</option><option value="2">1001_新亚奥旗舰店</option></select>'+
+						'</div>'+
+					'</div>'+
+					'<div class="form-group">'+
+						'<label class="label"><span class="text-danger">* </span>供应商编码：</label>'+
+						'<div class="row">'+
+						'<select class="select form-control"><option value="1">100521_宝盛道吉</option><option value="2">100522_天材地宝</option></select>'+
+						'</div>'+
+					'</div>'+
+					'<div class="form-group"><!-- has-error -->'+
+						'<label class="label"><span class="text-danger">* </span>费用编码：</label>'+
+						'<div class="row">'+
+						'<select class="select form-control"><option value="1">01_内卡费用</option><option value="2">02_外卡费用</option></select>'+
+						'</div>'+
+					'</div>'+
+					'<div class="form-group"><!-- has-error -->'+
+						'<label class="label"><span class="text-danger">* </span>费率：</label>'+
+						'<div class="row">'+
+						'<input type="text" size="30" class="ipt form-control form-not-null" placeholder="请输入费率（%）">'+
+						'</div>'+
+					'</div>'+
+					'<div class="form-group">'+
+						'<label class="label">开始日期：</label>'+
+						'<div class="row">'+
+							'<input id="startDate" type="text" size="30" class="ipt form-control laydate-icon" placeholder="">'+
+						'</div>'+
+					'</div>'+
+					'<div class="form-group">'+
+						'<label class="label">结束日期：</label>'+
+						'<div class="row">'+
+							'<input id="endDate" type="text" size="30" class="ipt form-control laydate-icon" placeholder="">'+
+						'</div>'+
+					'</div>'+
+				'</div>',
+		success: function(layero, index){
+			layero.find('.layui-layer-btn0').addClass('disabled');//打开弹窗后给确定按钮添加disabled
+			//必填字段验证
+			$(".alert-form-view").find(".form-not-null").on('input propertychange', function() {
+				$('.alert-form-view').find('.form-not-null').each(function(index, el) {
+					var checkInput = $(this).val();
+					if(checkInput == ""){
+						layero.find('.layui-layer-btn0').addClass('disabled');
+					}else{
+						layero.find('.layui-layer-btn0').removeClass('disabled');
+					}
+				})
+			})
+			//修改上柜、撤柜日期
+			var start = {
+				elem: "#startDate",
+				event: 'focus',
+				choose: function(datas){
+					end.min = datas; //开始日选好后，重置结束日的最小日期
+					end.start = datas //将结束日的初始值设定为开始日
+				}
+			};
+			var end = {
+				elem: "#endDate",
+				event: 'focus',
+				choose: function(datas){
+					start.max = datas; //结束日选好后，重置开始日的最大日期
+				}
+			};
+			laydate(start);
+			laydate(end);
+		},
+		//点击确认按钮方法
+		yes: function(index, layero){
+			//点击确认后添加disabled 防止表单重复提交
+			layero.find('.layui-layer-btn0').addClass('disabled').text('提交中...');
+			//后台返回提交结果 并执行提示词和关闭弹层
+		    layer.msg('添加成功');
+		    layer.close(index);
+		}
+	});
+}
+//修改
+function modifyFunc(trID){
+	layer.open({
+		type: 1,
+		btn:['保存','取消'],
+		title: '修改费率',
+		shade: 0.6,
+		moveType: 1,
+		shift: -1,
+		content:'<div class="form-view alert-form-view">'+
+					'<div class="form-group">'+
+						'<label class="label"><span class="text-danger">* </span>门店编码：</label>'+
+						'<div class="row">'+
+						'<input type="text" size="30" class="ipt form-control" value="1002_五棵松店" disabled>'+
+						'</div>'+
+					'</div>'+
+					'<div class="form-group">'+
+						'<label class="label"><span class="text-danger">* </span>供应商编码：</label>'+
+						'<div class="row">'+
+						'<input type="text" size="30" class="ipt form-control" value="100521_宝盛道吉" disabled>'+
+						'</div>'+
+					'</div>'+
+					'<div class="form-group"><!-- has-error -->'+
+						'<label class="label"><span class="text-danger">* </span>费用编码：</label>'+
+						'<div class="row">'+
+						'<input type="text" size="30" class="ipt form-control" value="01_内卡费用" disabled>'+
+						'</div>'+
+					'</div>'+
+					'<div class="form-group"><!-- has-error -->'+
+						'<label class="label"><span class="text-danger">* </span>费率：</label>'+
+						'<div class="row">'+
+						'<input type="text" size="30" class="ipt form-control" placeholder="请输入费率（%）">'+
+						'<span class="help-block"></span><!-- error tips -->'+
+						'</div>'+
+					'</div>'+
+					'<div class="form-group">'+
+						'<label class="label">开始日期：</label>'+
+						'<div class="row">'+
+							'<input id="modifyStartDate" type="text" size="30" class="ipt form-control laydate-icon" placeholder="">'+
+						'</div>'+
+					'</div>'+
+					'<div class="form-group">'+
+						'<label class="label">结束日期：</label>'+
+						'<div class="row">'+
+							'<input id="modifyEndDate" type="text" size="30" class="ipt form-control laydate-icon" placeholder="">'+
+						'</div>'+
+					'</div>'+
+				'</div>',
+		success: function(){
+			//修改上柜、撤柜日期
+			var modifyStart = {
+				elem: "#modifyStartDate",
+				event: 'focus',
+				choose: function(datas){
+					modifyEnd.min = datas; //开始日选好后，重置结束日的最小日期
+					modifyEnd.modifyStart = datas //将结束日的初始值设定为开始日
+				}
+			};
+			var modifyEnd = {
+				elem: "#modifyEndDate",
+				event: 'focus',
+				choose: function(datas){
+					modifyStart.max = datas; //结束日选好后，重置开始日的最大日期
+				}
+			};
+			laydate(modifyStart);
+			laydate(modifyEnd);
+		},
+		yes: function(index, layero){
+		    layer.msg('修改成功');
+		    layer.close(index);
+		}
+	});
+}
+</script>
+</body>
+</html>

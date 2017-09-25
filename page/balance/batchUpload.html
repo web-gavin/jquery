@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>上品折扣后台管理</title>
+<link rel="stylesheet" href="../../css/reset.css">
+<link rel="stylesheet" href="../../css/chosen.css">
+<link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="../../css/skins.css">
+</head>
+
+<body>
+<div class="main-page">
+	<div class="mt clearfix">
+		<div class="upload-box">
+			<div class="upload-inner">
+				<input id="file" name="file" class="upload-input" type="file">
+				<label class="upload-label" for="file">
+					<figure></figure>
+					<span>点击选择文件</span>
+				</label>
+				<input type="button" class="btn btn-lg btn-primary btn-upload" value="开始上传">
+			</div>
+		</div>
+	</div>
+	<!--<div class="mt clearfix">
+        <table class="table table-hover">
+            <thead>
+	            <tr>
+	                <th>年份</th>
+	                <th>月份</th>
+	                <th>门店编码</th>
+	                <th>门店名称</th>
+	                <th>供应商编码</th>
+	                <th>供应商名称</th>
+	                <th>商标</th>
+	                <th>品牌名称</th>
+	                <th>经营模式</th>
+	                <th>费用名称</th>
+	                <th>费用金额</th>
+	                <th>状态</th>
+	                <th>收款编码</th>
+	                <th>收款名称</th>
+	                <th>录入人</th>
+	                <th>录入日期</th>
+	                <th>收款人</th>
+	                <th>收款日期</th>
+	                <th>备注</th>
+	            </tr>
+            </thead>
+            <tbody>
+            	<tr>
+	                <td>2014</td>
+	                <td>06</td>
+	                <td>1001</td>
+	                <td>王府井店</td>
+	                <td>100128</td>
+	                <td>北京华亭雨中贸易有限公司</td>
+	                <td></td>
+	                <td></td>
+	                <td>联营</td>
+	                <td>保证金</td>
+	                <td>0.00</td>
+	                <td>录入</td>
+	                <td>0201</td>
+	                <td>现金</td>
+            		<td>REN.HL</td>
+            		<td>2014-02-28</td>
+            		<td>LIU.FAN</td>
+            		<td>2017-09-01</td>
+            		<td>已收款</td>
+            	</tr>
+            	<tr class="bg-danger">
+	                <td>2014</td>
+	                <td>06</td>
+	                <td>1001</td>
+	                <td>王府井店</td>
+	                <td>100128</td>
+	                <td>北京华亭雨中贸易有限公司</td>
+	                <td></td>
+	                <td></td>
+	                <td>联营</td>
+	                <td>保证金</td>
+	                <td>0.00</td>
+	                <td>录入</td>
+	                <td>0201</td>
+	                <td>现金</td>
+            		<td>REN.HL</td>
+            		<td>2014-02-28</td>
+            		<td>LIU.FAN</td>
+            		<td>2017-09-01</td>
+            		<td>已收款</td>
+            	</tr>
+            </tbody>
+            <tfoot>
+	            <tr>
+	                <td colspan="19">
+	                    <div class="pull-left">
+                            <button type="button" class="btn btn-default">导出错误列表</button>
+	                    </div>
+	                    <div class="pull-right page-box">
+	                        <div class="pagination-info">共有1条，每页显示：20条</div>
+	                        <ul class="pagination">
+	                        	<li class="disabled" page-index="1"><a>«</a></li>
+	                        	<li class="disabled" page-index="0"><a>‹</a></li>
+	                        	<li class="active" page-index="1"><a>1</a></li>
+	                        	<li page-index="2"><a>2</a></li>
+	                        	<li page-index="3"><a>3</a></li>
+	                        	<li page-index="4"><a>4</a></li>
+	                        	<li class="disabled" page-index="2"><a>›</a></li>
+	                        	<li class="disabled" page-index="1"><a>»</a></li>
+	                        </ul>
+	                        <div class="pagination-goto">
+	                            <input type="text" class="ipt form-control" id="gotoPageNo">
+	                            <button type="button" class="btn btn-default" id="goBtn">GO</button>
+	                            <input type="hidden" id="totalCount" name="totalCount" value="100">
+	                        </div>
+	                    </div>
+	                </td>
+	            </tr>
+            </tfoot>
+        </table>
+	</div>-->
+	<div class="mt clearfix">
+		<div class="page-tip">
+			<b>温馨提示：</b>
+			<p>• 原模板中“色系”列，不再需要填写；</p>
+			<p>• 原模板中尺码填写有三列“国标尺码、企业尺码1、企业尺码2”，现只保留一列“尺码”列。填写规则要认真查看供应商主数据采集模板中“主数据模板录入规则”哦。</p>
+			<p>• 请您每次填写新增货品信息时，一定要在供应商服务平台右上角“资料下载”中下载最新版供应商主数据采集模板填写。</p>
+		</div>
+	</div>
+	<div class="no-data-info" style="display:none"><i class="fa"></i><span class="ng-binding">没有查询到符合条件的结果，请尝试更改关键词或其它选项</span></div><!-- 当没有查询结果时显示 -->
+</div>
+<script src="../../js/jquery-1.8.3.min.js"></script>
+<script src="../../js/jquery.placeholder.min.js"></script>
+<script src="../../js/jquery.chosen.min.js"></script>
+<script src="../../js/layer/layer.js"></script>
+<script src="../../js/laydate/laydate.js"></script>
+<script src="../../js/main.js"></script>
+<script>
+$(function(){
+	$(".btn-upload").attr("disabled", true)
+	//上传文件 获取文件名
+	$('.upload-input').change(function(e){
+	    var input = e.target || window.event.srcElement; //获取事件源，兼容chrome/IE
+	    var inputVal = input.value;
+	    var fileName = inputVal.substring(inputVal.lastIndexOf('\\')+1);
+	    var fileSuffix = inputVal.substring(inputVal.lastIndexOf('.')+1);
+	    $('.upload-label').find('span').text(fileName);
+		$(".btn-upload").attr("disabled", false)
+	})
+	$(".btn-upload").on('click', function() {
+		$(this).attr("disabled", true).val("上传中...")
+	});
+	//上传成功返回数据
+})
+</script>
+</body>
+</html>

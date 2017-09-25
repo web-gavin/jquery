@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>上品折扣后台管理</title>
+<link rel="stylesheet" href="../../css/reset.css">
+<link rel="stylesheet" href="../../css/chosen.css">
+<link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../css/skins.css">
+</head>
+
+<body>
+<div class="main-page">
+	<div class="btn-group">
+		<a href="javascript:addFunc();" class="btn btn-primary">添加支付方式</a>
+	</div>
+	<div class="mt clearfix">
+        <table class="table table-hover">
+            <thead>
+	            <tr>
+	                <th>支付方式编码</th>
+	                <th>支付方式描述</th>
+	                <th class="text-right">操作</th>
+	            </tr>
+            </thead>
+            <tbody>
+            	<tr>
+            		<td>0201</td>
+            		<td>支票</td>
+            		<td class="text-right"><a href="javascript:modifyFunc(200001)">修改</a></td>
+            	</tr>
+            	<tr>
+            		<td>0301</td>
+            		<td>内卡1</td>
+            		<td class="text-right"><a href="javascript:modifyFunc(200002)">修改</a></td>
+            	</tr>
+            	<tr>
+            		<td>0302</td>
+            		<td>内卡2</td>
+            		<td class="text-right"><a href="javascript:modifyFunc(200011)">修改</a></td>
+            	</tr>
+            </tbody>
+            <tfoot>
+	            <tr>
+	                <td colspan="3">
+	                    <div class="pull-right page-box">
+	                        <div class="pagination-info">共有1条，每页显示：20条</div>
+	                        <ul class="pagination">
+	                        	<li class="disabled" page-index="1"><a>«</a></li>
+	                        	<li class="disabled" page-index="0"><a>‹</a></li>
+	                        	<li class="active" page-index="1"><a>1</a></li>
+	                        	<li page-index="2"><a>2</a></li>
+	                        	<li page-index="3"><a>3</a></li>
+	                        	<li page-index="4"><a>4</a></li>
+	                        	<li class="disabled" page-index="2"><a>›</a></li>
+	                        	<li class="disabled" page-index="1"><a>»</a></li>
+	                        </ul>
+	                        <div class="pagination-goto">
+	                            <input type="text" class="ipt form-control" id="gotoPageNo">
+	                            <button type="button" class="btn btn-default" id="goBtn">GO</button>
+	                            <input type="hidden" id="totalCount" name="totalCount" value="100">
+	                        </div>
+	                    </div>
+	                </td>
+	            </tr>
+            </tfoot>
+        </table>
+	</div>
+	<div class="mt clearfix">
+		<div class="page-tip">
+			<b>温馨提示：</b>
+			<p>• 原模板中“色系”列，不再需要填写；</p>
+			<p>• 原模板中尺码填写有三列“国标尺码、企业尺码1、企业尺码2”，现只保留一列“尺码”列。填写规则要认真查看供应商主数据采集模板中“主数据模板录入规则”哦。</p>
+			<p>• 请您每次填写新增货品信息时，一定要在供应商服务平台右上角“资料下载”中下载最新版供应商主数据采集模板填写。</p>
+		</div>
+	</div>
+	<div class="no-data-info" style="display:none"><i class="fa"></i><span class="ng-binding">没有查询到符合条件的结果，请尝试更改关键词或其它选项</span></div><!-- 当没有查询结果时显示 -->
+</div>
+<script src="../../js/jquery-1.8.3.min.js"></script>
+<script src="../../js/jquery.chosen.min.js"></script>
+<script src="../../js/layer/layer.js"></script>
+<script src="../../js/main.js"></script>
+<script>
+//添加
+function addFunc(){
+	layer.open({
+		type: 1,
+		btn:['确定','取消'],
+		title: '添加支付方式',
+		shade: 0.6,
+		moveType: 1,
+		shift: -1,
+		content:'<div class="form-view alert-form-view">'+
+					'<div class="form-group">'+
+						'<label class="label"><span class="text-danger">* </span>支付方式编码：</label>'+
+						'<div class="row">'+
+						'<input type="text" size="30" class="ipt form-control form-not-null" placeholder="如：0302">'+
+						'</div>'+
+					'</div>'+
+					'<div class="form-group">'+
+						'<label class="label"><span class="text-danger">* </span>支付方式描述：</label>'+
+						'<div class="row">'+
+						'<input type="text" size="30" class="ipt form-control form-not-null" placeholder="如：现金">'+
+						'</div>'+
+					'</div>'+
+				'</div>',
+		success: function(layero, index){
+			layero.find('.layui-layer-btn0').addClass('disabled');//打开弹窗后给确定按钮添加disabled
+			//必填字段验证
+			$(".alert-form-view").find(".form-not-null").on('input propertychange', function() {
+				$('.alert-form-view').find('.form-not-null').each(function(index, el) {
+					var checkInput = $(this).val();
+					if(checkInput == ""){
+						layero.find('.layui-layer-btn0').addClass('disabled');
+					}else{
+						layero.find('.layui-layer-btn0').removeClass('disabled');
+					}
+				})
+			})
+		},
+		//点击确认按钮方法
+		yes: function(index, layero){
+			//点击确认后添加disabled 防止表单重复提交
+			layero.find('.layui-layer-btn0').addClass('disabled').text('提交中...');
+			//后台返回提交结果 并执行提示词和关闭弹层
+		    layer.msg('添加成功');
+		    layer.close(index);
+		}
+	});
+}
+//修改
+function modifyFunc(trID){
+	layer.open({
+		type: 1,
+		btn:['保存','取消'],
+		title: '修改支付方式',
+		shade: 0.6,
+		moveType: 1,
+		shift: -1,
+		content:'<div class="form-view alert-form-view">'+
+					'<div class="form-group">'+
+						'<label class="label"><span class="text-danger">* </span>支付方式编码：</label>'+
+						'<div class="row">'+
+						'<input type="text" size="30" class="ipt form-control" value="0302" disabled>'+
+						'</div>'+
+					'</div>'+
+					'<div class="form-group">'+
+						'<label class="label"><span class="text-danger">* </span>支付方式描述：</label>'+
+						'<div class="row">'+
+						'<input type="text" size="30" class="ipt form-control" value="现金">'+
+						'</div>'+
+					'</div>'+
+				'</div>',
+		yes: function(index, layero){
+		    //按钮【保存】的回调
+		    layer.msg('修改成功');
+		    layer.close(index);
+		}
+	});
+}
+</script>
+</body>
+</html>

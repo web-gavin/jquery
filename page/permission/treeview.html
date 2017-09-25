@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>上品折扣后台管理</title>
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/chosen.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/skins.css">
+</head>
+
+<body>
+<div class="main-page">
+    <div id="treemenu" class="treemenu"></div>
+</div>
+<script src="../../js/jquery-1.8.3.min.js"></script>
+<script src="../../js/layer/layer.js"></script>
+<script>
+    var jsonData = [
+        {sid:0, rsName:'全部资源', rsCode:'null', parentSid:-1, rsLevel:null, rsOrder:null, init:null, createdTime:null, createdUser:null, leaf:false, childResources:null},
+        {sid:1, rsName:'权限管理', rsCode:'jx_security', parentSid:0, rsLevel:1, rsOrder:1, init:1, createdTime:null, createdUser:14, leaf:false, childResources:null},
+        {sid:14, rsName:'用户管理', rsCode:'jx_security_user', parentSid:1, rsLevel:2, rsOrder:1, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+        {sid:15, rsName:'角色管理', rsCode:'jx_security_role', parentSid:1, rsLevel:2, rsOrder:2, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+
+        {sid:2, rsName:'促销活动管理', rsCode:'jx_member', parentSid:0, rsLevel:1, rsOrder:2, init:1, createdTime:null, createdUser:14, leaf:false, childResources:null},
+        {sid:16, rsName:'查询折扣活动', rsCode:'jx_member_level', parentSid:2, rsLevel:2, rsOrder:1, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+        {sid:17, rsName:'查询一口价活动', rsCode:'jx_member_points', parentSid:2, rsLevel:2, rsOrder:2, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+        {sid:18, rsName:'报名参加一口价活动', rsCode:'jx_member_points', parentSid:2, rsLevel:2, rsOrder:2, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+
+
+        {sid:3, rsName:'订单协同', rsCode:'jx_pad', parentSid:0, rsLevel:1, rsOrder:3, init:1, createdTime:null, createdUser:14, leaf:false, childResources:null},
+        {sid:19, rsName:'查询订单', rsCode:'jx_pad_information', parentSid:3, rsLevel:2, rsOrder:1, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+        {sid:20, rsName:'创建订单', rsCode:'jx_pad_batch', parentSid:3, rsLevel:2, rsOrder:2, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+
+
+        {sid:4, rsName:'品价查询', rsCode:'jx_guide', parentSid:0, rsLevel:1, rsOrder:4, init:1, createdTime:null, createdUser:14, leaf:false, childResources:null},
+        {sid:21, rsName:'销售查询', rsCode:'jx_guide_register', parentSid:4, rsLevel:2, rsOrder:1, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+        {sid:22, rsName:'库存查询', rsCode:'jx_guide_complete', parentSid:4, rsLevel:2, rsOrder:2, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+
+        {sid:5, rsName:'主数据查询', rsCode:'jx_promotion', parentSid:0, rsLevel:1, rsOrder:5, init:1, createdTime:null, createdUser:14, leaf:false, childResources:null},
+        {sid:23, rsName:'主数据导入', rsCode:'jx_promotion_coupons', parentSid:5, rsLevel:2, rsOrder:1, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+        {sid:24, rsName:'主数据屏蔽', rsCode:'jx_promotion_multipoints', parentSid:5, rsLevel:2, rsOrder:2, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+        {sid:25, rsName:'取消屏蔽', rsCode:'jx_promotion_pointsforcash', parentSid:5, rsLevel:2, rsOrder:3, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+
+        {sid:6, rsName:'合同管理', rsCode:'jx_ticket', parentSid:0, rsLevel:1, rsOrder:6, init:1, createdTime:null, createdUser:14, leaf:false, childResources:null},
+        {sid:26, rsName:'合同上传', rsCode:'jx_ticket_maintenance', parentSid:6, rsLevel:2, rsOrder:1, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+        {sid:27, rsName:'合同下载', rsCode:'jx_ticket_querycode', parentSid:6, rsLevel:2, rsOrder:2, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+
+        {sid:7, rsName:'结算数据管理', rsCode:'jx_maindata', parentSid:0, rsLevel:1, rsOrder:7, init:1, createdTime:null, createdUser:14, leaf:false, childResources:null},
+        {sid:28, rsName:'结算数据导入', rsCode:'jx_maindata_supply', parentSid:7, rsLevel:2, rsOrder:1, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+        {sid:29, rsName:'结算数据查询', rsCode:'jx_maindata_brand', parentSid:7, rsLevel:2, rsOrder:2, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+        {sid:30, rsName:'下沙结算查询', rsCode:'jx_maindata_category', parentSid:7, rsLevel:2, rsOrder:3, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+
+        {sid:8, rsName:'报表查询', rsCode:'jx_basicdata', parentSid:0, rsLevel:1, rsOrder:8, init:1, createdTime:null, createdUser:14, leaf:false, childResources:null},
+        {sid:31, rsName:'销售流水报表', rsCode:'jx_basicdata_pooldiscount', parentSid:8, rsLevel:2, rsOrder:1, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+        {sid:32, rsName:'库存报表', rsCode:'jx_basicdata_leasediscount', parentSid:8, rsLevel:2, rsOrder:2, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+
+        {sid:9, rsName:'虚库管理', rsCode:'jx_settlement', parentSid:0, rsLevel:1, rsOrder:9, init:1, createdTime:null, createdUser:14, leaf:false, childResources:null},
+        {sid:33, rsName:'虚库库存管理', rsCode:'jx_settlement_fee', parentSid:9, rsLevel:2, rsOrder:1, init:1, createdTime:null, createdUser:14, leaf:false, childResources:[] }
+
+
+        /*{sid:10, rsName:'对账管理', rsCode:'jx_checkbill', parentSid:0, rsLevel:1, rsOrder:10, init:1, createdTime:null, createdUser:14, leaf:false, childResources:null},fa'l
+        {sid:52, rsName:'专柜半手工对账', rsCode:'jx_checkbill_manual', parentSid:10, rsLevel:2, rsOrder:1, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+        {sid:53, rsName:'系统自动对账', rsCode:'jx_checkbill_auto', parentSid:10, rsLevel:2, rsOrder:2, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+        {sid:88, rsName:'购物车、支付操作日志', rsCode:'jx_log_manage_sale', parentSid:10, rsLevel:2, rsOrder:3, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+        {sid:11, rsName:'客服系统', rsCode:'jx_custom', parentSid:0, rsLevel:1, rsOrder:11, init:1, createdTime:null, createdUser:14, leaf:false, childResources:null},
+        {sid:54, rsName:'订单查询', rsCode:'jx_custom_vieworder', parentSid:11, rsLevel:2, rsOrder:1, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+        {sid:55, rsName:'积分修改', rsCode:'jx_custom_modifypoints', parentSid:11, rsLevel:2, rsOrder:2, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+        {sid:56, rsName:'积分查询', rsCode:'jx_custom_pointsrecord', parentSid:11, rsLevel:2, rsOrder:3, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+        {sid:57, rsName:'优惠券派发', rsCode:'jx_custom_coupondistribute', parentSid:11, rsLevel:2, rsOrder:4, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+        {sid:58, rsName:'优惠券核销', rsCode:'jx_custom_couponverification', parentSid:11, rsLevel:2, rsOrder:5, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+        {sid:59, rsName:'会员信息修改', rsCode:'jx_custom_editmember', parentSid:11, rsLevel:2, rsOrder:6, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+        {sid:12, rsName:'报表管理', rsCode:'jx_report', parentSid:0, rsLevel:1, rsOrder:12, init:1, createdTime:null, createdUser:14, leaf:false, childResources:null},
+        {sid:60, rsName:'结算汇总表', rsCode:'jx_report_settlementsummary', parentSid:12, rsLevel:2, rsOrder:1, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+        {sid:61, rsName:'结算明细表查询', rsCode:'jx_report_settlementdetail', parentSid:12, rsLevel:2, rsOrder:2, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+        {sid:62, rsName:'收银表查询', rsCode:'jx_report_cashier', parentSid:12, rsLevel:2, rsOrder:3, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+        {sid:63, rsName:'销售报表查询', rsCode:'jx_report_salesreport', parentSid:12, rsLevel:2, rsOrder:4, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+        {sid:13, rsName:'微信公众号管理', rsCode:'jx_wechat', parentSid:0, rsLevel:1, rsOrder:13, init:1, createdTime:null, createdUser:14, leaf:false, childResources:null},
+        {sid:64, rsName:'菜单管理', rsCode:'jx_wechat_menu', parentSid:13, rsLevel:2, rsOrder:1, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+        {sid:65, rsName:'关注回复', rsCode:'jx_wechat_respond', parentSid:13, rsLevel:2, rsOrder:2, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+        {sid:66, rsName:'文字回复', rsCode:'jx_wechat_textreply', parentSid:13, rsLevel:2, rsOrder:3, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]},
+        {sid:89, rsName:'微信关注&取消关注日志', rsCode:'jx_log_manage_we', parentSid:13, rsLevel:2, rsOrder:4, init:1, createdTime:null, createdUser:14, leaf:true, childResources:[]}*/
+    ];
+    function createTree(jsons,parentSid){
+        if(jsons != null){
+
+            var ul = '<ul>';
+            var editCont = '<div class="editCont"><a class="addTree" href="javascript:;">添加</a><a class="delTree" href="javascript:;">删除</a><a class="edtTree" href="javascript:;">编辑</a></div>';
+
+            for(var i=0; i < jsons.length; i++){
+                var json = jsons[i];
+                if(json.parentSid == parentSid){
+                    if(!json.leaf){
+                        if(parentSid == -1){
+                            ul += '<li class="close"><span sid='+ json.sid +' code='+ json.rsCode +'>' + json.rsName + '</span>' + createTree(jsons,json.sid) + '<div class="editCont"><a class="addTree" href="javascript:;">添加</a></div></li>';
+                        }else{
+                            ul += '<li class="open"><i class="treeswitch"></i><span sid='+ json.sid +' code='+ json.rsCode +'>' + json.rsName + "</span>" + createTree(jsons,json.sid) + editCont + '</li>';
+                        }
+                    }else{
+                        ul += '<li><span sid='+ json.sid +' code='+ json.rsCode +'>' + json.rsName + '</span>' + editCont + '</li>';
+                    }
+                }
+            }
+
+            ul += "</ul>";
+        }
+
+        return ul;
+    }
+
+    function adjustNode(t, n, k){
+        var pName = t.siblings("span").text();
+        var pCode = t.siblings("span").attr("code");
+        var editCont = '<div class="editCont"><a class="addTree" href="javascript:;">添加</a><a class="delTree" href="javascript:;">删除</a><a class="edtTree" href="javascript:;">编辑</a></div>';
+        layer.open({
+            type: 1,
+            btn:['确定','取消'],
+            title: '添加/修改资源',
+            shade: 0.6,
+            moveType: 1,
+            shift: -1,
+            content:'<div class="form-view alert-form-view">'+
+            '<div class="form-group">'+
+            '<label class="label"><span class="text-danger">* </span>资源名称：</label>'+
+            '<div class="row">'+
+            '<input type="text" size="30" class="ipt treeName form-control form-not-null" placeholder="资源名称">'+
+            '</div>'+
+            '</div>'+
+            '<div class="form-group">'+
+            '<label class="label"><span class="text-danger">* </span>资源编码：</label>'+
+            '<div class="row">'+
+            '<input type="text" size="30" class="ipt treeCode form-control form-not-null" placeholder="资源编码">'+
+            '</div>'+
+            '</div>'+
+            '</div>',
+            success: function(layero, index){
+                layero.find('.layui-layer-btn0').addClass('disabled');
+                if(k){
+                    //修改
+                    $(".treeName").attr("placeholder", pName);
+                    $(".treeCode").attr("placeholder", pCode);
+                }
+                //判断必填字段
+                $(".alert-form-view").find(".form-not-null").on('input propertychange', function() {
+                    $('.alert-form-view').find('.form-not-null').each(function(index, el) {
+                        var checkInput = $(this).val();
+                        if(checkInput == ""){
+                            layero.find('.layui-layer-btn0').addClass('disabled');
+                        }else{
+                            layero.find('.layui-layer-btn0').removeClass('disabled');
+                        }
+                    })
+                })
+            },
+            //点击确认按钮方法
+            yes: function(index, layero){
+                //点击确认后添加disabled 防止表单重复提交
+                layero.find('.layui-layer-btn0').addClass('disabled').text('提交中...');
+                var treeName = $(".treeName").val();
+                var treeCode = $(".treeCode").val();
+                var sid = t.siblings("span").attr("sid");
+                var hasChildren = t.prev("ul").find("li");
+                if(k){
+                    var load = layer.load();
+                    $.ajax({
+                        url:'/jx-web-api/security/updateResource',
+                        type:'post',
+                        dataType:'json',
+                        data:{
+                            rsSid : sid,
+                            name : treeName,
+                            code : treeCode
+                        },
+                        success:function(response){
+                            if (response.success) {
+
+                                t.siblings("span").text(treeName);
+                                t.siblings("span").attr("code", treeCode);
+                                layer.msg('操作成功');
+                            }else{
+                                layer.open({
+                                    title: '失败',
+                                    content: response.desc
+                                });
+                            }
+                        },
+                        error:function(){
+                            layer.msg('系统繁忙');
+                        },
+                        timeout:30000
+                    });
+                    layer.close(load);
+                }else{
+                    //这里需要返回主键sid
+                    var treeSid = "1";
+
+                    var load = layer.load();
+                    $.ajax({
+                        url:'/jx-web-api/security/createResource',
+                        type:'post',
+                        dataType:'json',
+                        data:{
+                            parentSid : sid,
+                            name : treeName,
+                            code : treeCode
+                        },
+                        success:function(response){
+                            if (response.success) {
+
+                                treeSid = response.body.entity.sid;
+                                //添加
+                                if(hasChildren.length > 0){
+                                    t.prev("ul").find("li").removeClass('last');
+                                    t.prev("ul").append('<li class="last"><span sid='+ treeSid +' code='+ treeCode +'>' +  treeName + "</span>" + editCont + ' </li>');
+                                }else{
+                                    t.closest("li").addClass("close");
+                                    t.siblings("span").before('<i class="treeswitch"></i>');
+                                    t.before('<ul><li class="last"><span sid='+ treeSid +' code='+ treeCode +'>' +  treeName + "</span>" + editCont + ' </li></ul>');
+                                }
+                                layer.msg('操作成功');
+                            }else{
+                                layer.open({
+                                    title: '失败',
+                                    content: response.desc
+                                });
+                            }
+                        },
+                        error:function(){
+                            layer.msg('系统繁忙');
+                        },
+                        timeout:30000
+                    });
+                    layer.close(load);
+
+                }
+                //后台返回提交结果 并执行提示词和关闭弹层
+                layer.close(index);
+            }
+        });
+    }
+    //删除节点
+    function deleteNode(t){
+        layer.confirm('确定要删除此菜单?', {icon: 3, title:'提示'}, function(index){
+            var hasChildren = t.closest("li").find('ul').find("li");
+            var sid = t.siblings("span").attr("sid");
+            if(hasChildren.length > 0){
+                layer.msg('无法删除，此菜单还有内容！');
+            }else{
+                var load = layer.load();
+                $.ajax({
+                    url:'/jx-web-api/security/deleteResource',
+                    type:'post',
+                    dataType:'json',
+                    data:{
+                        rsSid : sid
+                    },
+                    success:function(response){
+                        if (response.success) {
+                            if(t.closest("li").hasClass('last')){
+                                t.closest("li").prev().addClass('last')
+                                var length = t.closest("li").siblings("li").length;
+                                if(length == 0) {
+                                    t.closest("li").closest("ul").closest("li").find("i").remove();
+                                }
+                                t.closest("li").remove();
+                            }else{
+                                t.closest("li").remove();
+                            }
+                            layer.msg('删除成功');
+                        }else{
+                            layer.open({
+                                title: '失败',
+                                content: response.desc
+                            });
+                        }
+                    },
+                    error:function(){
+                        layer.msg('系统繁忙');
+                    },
+                    timeout:30000
+                });
+                layer.close(load);
+            }
+            layer.close(index);
+        });
+    }
+
+    $(function(){
+        var ul = createTree(jsonData,-1);
+        $("#treemenu").append(ul);
+        $("#treemenu ul li:last-child").addClass("last");
+
+        //控制菜单的隐藏显示
+        $("#treemenu").on("click", ".treeswitch", function(){
+            if($(this).parent("li").hasClass("open")){
+                $(this).parent("li").removeClass("open").addClass("close");
+            }else{
+                $(this).parent("li").addClass("open").removeClass("close");
+            }
+        })
+
+        $("#treemenu").on("click", "a", function () {
+            var _this = $(this).closest(".editCont");
+            var targetName = $(this).attr("class");
+            switch (targetName){
+                case "addTree" :
+                    adjustNode(_this,targetName,0)
+                    break;
+                case "delTree" :
+                    deleteNode(_this)
+                    break;
+                case "edtTree" :
+                    adjustNode(_this,targetName,1)
+                    break;
+                default:
+                    alert("程序错误，请重新操作！")
+            }
+        });
+    });
+</script>
+</body>
+</html>

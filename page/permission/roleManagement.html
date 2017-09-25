@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>上品折扣后台管理</title>
+<link rel="stylesheet" href="../../css/reset.css">
+<link rel="stylesheet" href="../../css/skins.css">
+<link rel="stylesheet" href="../../css/main.css">
+</head>
+
+<body>
+<div class="main-page">
+	<div class="btn-group">
+		<a href="javascript:addFunc();" class="btn btn-primary">新增角色</a>
+	</div>
+	<div class="mt clearfix">
+        <table class="table table-hover">
+            <thead>
+	            <tr>
+	                <th>角色名称</th>
+	                <th class="text-right">操作</th>
+	            </tr>
+            </thead>
+            <tbody>
+            	<tr>
+            		<td>全局管理</td>
+            		<td class="text-right">
+            			<a href="javascript:modifyFunc();">编辑</a><span class="text-explode">|</span>
+            			<a class="j_delete" href="javascript:;">删除</a>
+            		</td>
+            	</tr>
+            	<tr>
+            		<td>合同</td>
+            		<td class="text-right">
+            			<a href="javascript:modifyFunc();">编辑</a><span class="text-explode">|</span>
+            			<a class="j_delete" href="javascript:;">删除</a>
+            		</td>
+            	</tr>
+            	<tr>
+            		<td>财务</td>
+            		<td class="text-right">
+            			<a href="javascript:modifyFunc();">编辑</a><span class="text-explode">|</span>
+            			<a class="j_delete" href="javascript:;">删除</a>
+            		</td>
+            	</tr>
+            </tbody>
+            <tfoot>
+	            <tr>
+	                <td colspan="2">
+	                    <div class="pull-right page-box">
+	                        <div class="pagination-info">共有1条，每页显示：20条</div>
+	                        <ul class="pagination">
+	                        	<li class="disabled" page-index="1"><a>«</a></li>
+	                        	<li class="disabled" page-index="0"><a>‹</a></li>
+	                        	<li class="active" page-index="1"><a>1</a></li>
+	                        	<li page-index="2"><a>2</a></li>
+	                        	<li page-index="3"><a>3</a></li>
+	                        	<li page-index="4"><a>4</a></li>
+	                        	<li class="disabled" page-index="2"><a>›</a></li>
+	                        	<li class="disabled" page-index="1"><a>»</a></li>
+	                        </ul>
+	                        <div class="pagination-goto">
+	                            <input type="text" class="ipt form-control" id="gotoPageNo">
+	                            <button type="button" class="btn btn-default" id="goBtn">GO</button>
+	                            <input type="hidden" id="totalCount" name="totalCount" value="1">
+	                        </div>
+	                    </div>
+	                </td>
+	            </tr>
+            </tfoot>
+        </table>
+	</div>
+	<div class="mt clearfix">
+		<div class="page-tip">
+			<b>温馨提示：</b>
+			<p>• 原模板中“色系”列，不再需要填写；</p>
+			<p>• 原模板中尺码填写有三列“国标尺码、企业尺码1、企业尺码2”，现只保留一列“尺码”列。填写规则要认真查看供应商主数据采集模板中“主数据模板录入规则”哦。</p>
+			<p>• 请您每次填写新增货品信息时，一定要在供应商服务平台右上角“资料下载”中下载最新版供应商主数据采集模板填写。</p>
+		</div>
+	</div>
+</div>
+<!--权限设置-->
+<div id="permission" class="tabs-permission clear" style="display: none;">
+	<div class="tabs-permission-inner">
+		<dl class="clearfix">
+			<dt><input type="checkbox" value="权限管理" class="chk1st">权限管理</dt>
+			<dd>
+				<ul>
+					<li>
+						<span><input type="checkbox" value="用户管理" class="chk2nd">用户管理</span>
+						<ol>
+							<li><input type="checkbox" value="添加用户" class="chk3rd">添加用户</li>
+							<li><input type="checkbox" value="删除用户" class="chk3rd">删除用户</li>
+							<li><input type="checkbox" value="修改用户" class="chk3rd">修改用户</li>
+							<li><input type="checkbox" value="查询用户明细" class="chk3rd">查询用户明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="角色管理" class="chk2nd">角色管理</span>
+						<ol>
+							<li><input type="checkbox" value="添加角色" class="chk3rd">添加角色</li>
+							<li><input type="checkbox" value="删除角色" class="chk3rd">删除角色</li>
+							<li><input type="checkbox" value="修改角色" class="chk3rd">修改角色</li>
+							<li><input type="checkbox" value="查询角色明细" class="chk3rd">查询角色明细</li>
+						</ol>
+					</li>
+				</ul>
+			</dd>
+		</dl>
+
+		<dl class="clearfix">
+			<dt><input type="checkbox" value="会员管理" class="chk1st">会员管理</dt>
+			<dd>
+				<ul>
+					<li>
+						<span><input type="checkbox" value="等级管理" class="chk2nd">等级管理</span>
+						<ol>
+							<li><input type="checkbox" value="添加等级" class="chk3rd">添加等级</li>
+							<li><input type="checkbox" value="删除等级" class="chk3rd">删除等级</li>
+							<li><input type="checkbox" value="修改等级" class="chk3rd">修改等级</li>
+							<li><input type="checkbox" value="查询等级明细" class="chk3rd">查询等级明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="积分管理" class="chk2nd">积分管理</span>
+						<ol>
+							<li><input type="checkbox" value="添加积分" class="chk3rd">添加积分</li>
+							<li><input type="checkbox" value="删除积分" class="chk3rd">删除积分</li>
+							<li><input type="checkbox" value="修改积分" class="chk3rd">修改积分</li>
+							<li><input type="checkbox" value="查询积分明细" class="chk3rd">查询积分明细</li>
+						</ol>
+					</li>
+				</ul>
+			</dd>
+		</dl>
+
+		<dl class="clearfix">
+			<dt><input type="checkbox" value="PAD管理" class="chk1st">PAD管理</dt>
+			<dd>
+				<ul>
+					<li>
+						<span><input type="checkbox" value="资讯管理" class="chk2nd">资讯管理</span>
+						<ol>
+							<li><input type="checkbox" value="添加资讯" class="chk3rd">添加资讯</li>
+							<li><input type="checkbox" value="删除资讯" class="chk3rd">删除资讯</li>
+							<li><input type="checkbox" value="修改资讯" class="chk3rd">修改资讯</li>
+							<li><input type="checkbox" value="查询资讯明细" class="chk3rd">查询资讯明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="批次管理" class="chk2nd">批次管理</span>
+						<ol>
+							<li><input type="checkbox" value="添加批次" class="chk3rd">添加批次</li>
+							<li><input type="checkbox" value="删除批次" class="chk3rd">删除批次</li>
+							<li><input type="checkbox" value="修改批次" class="chk3rd">修改批次</li>
+							<li><input type="checkbox" value="查询批次明细" class="chk3rd">查询批次明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="信息录入" class="chk2nd">信息录入</span>
+						<ol>
+							<li><input type="checkbox" value="添加信息录入" class="chk3rd">添加信息录入</li>
+							<li><input type="checkbox" value="删除信息录入" class="chk3rd">删除信息录入</li>
+							<li><input type="checkbox" value="修改信息录入" class="chk3rd">修改信息录入</li>
+							<li><input type="checkbox" value="查询信息录入" class="chk3rd">查询信息录入</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="调拨管理" class="chk2nd">调拨管理</span>
+						<ol>
+							<li><input type="checkbox" value="添加调拨" class="chk3rd">添加调拨</li>
+							<li><input type="checkbox" value="删除调拨" class="chk3rd">删除调拨</li>
+							<li><input type="checkbox" value="修改调拨" class="chk3rd">修改调拨</li>
+							<li><input type="checkbox" value="查询调拨明细" class="chk3rd">查询调拨明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="绑定PAD" class="chk2nd">绑定PAD</span>
+						<ol>
+							<li><input type="checkbox" value="添加PAD" class="chk3rd">添加PAD</li>
+							<li><input type="checkbox" value="删除PAD" class="chk3rd">删除PAD</li>
+							<li><input type="checkbox" value="修改PAD" class="chk3rd">修改PAD</li>
+							<li><input type="checkbox" value="查询PAD明细" class="chk3rd">查询PAD明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="PAD信息" class="chk2nd">PAD信息</span>
+						<ol>
+							<li><input type="checkbox" value="添加PAD信息" class="chk3rd">添加PAD信息</li>
+							<li><input type="checkbox" value="删除PAD信息" class="chk3rd">删除PAD信息</li>
+							<li><input type="checkbox" value="修改PAD信息" class="chk3rd">修改PAD信息</li>
+							<li><input type="checkbox" value="查询PAD信息明细" class="chk3rd">查询PAD信息明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="导购管理" class="chk2nd">导购管理</span>
+						<ol>
+							<li><input type="checkbox" value="添加导购" class="chk3rd">添加导购</li>
+							<li><input type="checkbox" value="删除导购" class="chk3rd">删除导购</li>
+							<li><input type="checkbox" value="修改导购" class="chk3rd">修改导购</li>
+							<li><input type="checkbox" value="查看导购明细" class="chk3rd">查看导购明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="促销活动管理" class="chk2nd">促销活动管理</span>
+						<ol>
+							<li><input type="checkbox" value="添加促销活动" class="chk3rd">添加促销活动</li>
+							<li><input type="checkbox" value="删除促销活动" class="chk3rd">删除促销活动</li>
+							<li><input type="checkbox" value="修改促销活动" class="chk3rd">修改促销活动</li>
+							<li><input type="checkbox" value="查询促销活动明细" class="chk3rd">查询促销活动明细</li>
+						</ol>
+					</li>
+				</ul>
+			</dd>
+		</dl>
+
+		<dl class="clearfix">
+			<dt><input type="checkbox" value="优惠券管理" class="chk1st">优惠券管理</dt>
+			<dd>
+				<ul>
+					<li>
+						<span><input type="checkbox" value="优惠券维护" class="chk2nd">优惠券维护</span>
+						<ol>
+							<li><input type="checkbox" value="添加优惠券" class="chk3rd">添加优惠券</li>
+							<li><input type="checkbox" value="删除优惠券" class="chk3rd">删除优惠券</li>
+							<li><input type="checkbox" value="修改优惠券" class="chk3rd">修改优惠券</li>
+							<li><input type="checkbox" value="查询优惠券明细" class="chk3rd">查询优惠券明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="券码查询" class="chk2nd">券码查询</span>
+						<ol>
+							<li><input type="checkbox" value="添加券码" class="chk3rd">添加券码</li>
+							<li><input type="checkbox" value="删除券码" class="chk3rd">删除券码</li>
+							<li><input type="checkbox" value="修改券码" class="chk3rd">修改券码</li>
+							<li><input type="checkbox" value="查询券码明细" class="chk3rd">查询券码明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="优惠券派发" class="chk2nd">优惠券派发</span>
+						<ol>
+							<li><input type="checkbox" value="添加派发" class="chk3rd">添加派发</li>
+							<li><input type="checkbox" value="删除派发" class="chk3rd">删除派发</li>
+							<li><input type="checkbox" value="修改派发" class="chk3rd">修改派发</li>
+							<li><input type="checkbox" value="查询派发明细" class="chk3rd">查询派发明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="派券使用记录" class="chk2nd">派券使用记录</span>
+						<ol>
+							<li><input type="checkbox" value="添加使用记录" class="chk3rd">添加使用记录</li>
+							<li><input type="checkbox" value="删除使用记录" class="chk3rd">删除使用记录</li>
+							<li><input type="checkbox" value="修改使用记录" class="chk3rd">修改使用记录</li>
+							<li><input type="checkbox" value="查询使用记录明细" class="chk3rd">查询使用记录明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="批量派券" class="chk2nd">批量派券</span>
+						<ol>
+							<li><input type="checkbox" value="批量添加券" class="chk3rd">批量添加券</li>
+							<li><input type="checkbox" value="批量删除券" class="chk3rd">批量删除券</li>
+							<li><input type="checkbox" value="批量修改券" class="chk3rd">批量修改券</li>
+							<li><input type="checkbox" value="批量查询券明细" class="chk3rd">批量查询券明细</li>
+						</ol>
+					</li>
+				</ul>
+			</dd>
+		</dl>
+
+		<dl class="clearfix">
+			<dt><input type="checkbox" value="主数据管理" class="chk1st">主数据管理</dt>
+			<dd>
+				<ul>
+					<li>
+						<span><input type="checkbox" value="供应商管理" class="chk2nd">供应商管理</span>
+						<ol>
+							<li><input type="checkbox" value="添加供应商" class="chk3rd">添加供应商</li>
+							<li><input type="checkbox" value="删除供应商" class="chk3rd">删除供应商</li>
+							<li><input type="checkbox" value="修改供应商" class="chk3rd">修改供应商</li>
+							<li><input type="checkbox" value="查询供应商明细" class="chk3rd">查询供应商明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="品牌管理" class="chk2nd">品牌管理</span>
+						<ol>
+							<li><input type="checkbox" value="添加品牌" class="chk3rd">添加品牌</li>
+							<li><input type="checkbox" value="删除品牌" class="chk3rd">删除品牌</li>
+							<li><input type="checkbox" value="修改品牌" class="chk3rd">修改品牌</li>
+							<li><input type="checkbox" value="查询品牌明细" class="chk3rd">查询品牌明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="品类管理" class="chk2nd">品类管理</span>
+						<ol>
+							<li><input type="checkbox" value="添加品类" class="chk3rd">添加品类</li>
+							<li><input type="checkbox" value="删除品类" class="chk3rd">删除品类</li>
+							<li><input type="checkbox" value="修改品类" class="chk3rd">修改品类</li>
+							<li><input type="checkbox" value="查询品类明细" class="chk3rd">查询品类明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="在柜信息管理" class="chk2nd">在柜信息管理</span>
+						<ol>
+							<li><input type="checkbox" value="添加在柜信息" class="chk3rd">添加在柜信息</li>
+							<li><input type="checkbox" value="删除在柜信息" class="chk3rd">删除在柜信息</li>
+							<li><input type="checkbox" value="修改在柜信息" class="chk3rd">修改在柜信息</li>
+							<li><input type="checkbox" value="查询在柜信息明细" class="chk3rd">查询在柜信息明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="对应关系管理" class="chk2nd">对应关系管理</span>
+						<ol>
+							<li><input type="checkbox" value="添加对应关系" class="chk3rd">添加对应关系</li>
+							<li><input type="checkbox" value="删除对应关系" class="chk3rd">删除对应关系</li>
+							<li><input type="checkbox" value="修改对应关系" class="chk3rd">修改对应关系</li>
+							<li><input type="checkbox" value="查询对应关系明细" class="chk3rd">查询对应关系明细</li>
+						</ol>
+					</li>
+				</ul>
+			</dd>
+		</dl>
+
+		<dl class="clearfix">
+			<dt><input type="checkbox" value="基础数据管理" class="chk1st">基础数据管理</dt>
+			<dd>
+				<ul>
+					<li>
+						<span><input type="checkbox" value="联营扣率管理" class="chk2nd">联营扣率管理</span>
+						<ol>
+							<li><input type="checkbox" value="添加供应商" class="chk3rd">添加供应商</li>
+							<li><input type="checkbox" value="删除供应商" class="chk3rd">删除供应商</li>
+							<li><input type="checkbox" value="修改供应商" class="chk3rd">修改供应商</li>
+							<li><input type="checkbox" value="查询供应商明细" class="chk3rd">查询供应商明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="租赁（扣率）" class="chk2nd">租赁（扣率）</span>
+						<ol>
+							<li><input type="checkbox" value="添加品牌" class="chk3rd">添加品牌</li>
+							<li><input type="checkbox" value="删除品牌" class="chk3rd">删除品牌</li>
+							<li><input type="checkbox" value="修改品牌" class="chk3rd">修改品牌</li>
+							<li><input type="checkbox" value="查询品牌明细" class="chk3rd">查询品牌明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="租赁（租金）" class="chk2nd">租赁（租金）</span>
+						<ol>
+							<li><input type="checkbox" value="添加品类" class="chk3rd">添加品类</li>
+							<li><input type="checkbox" value="删除品类" class="chk3rd">删除品类</li>
+							<li><input type="checkbox" value="修改品类" class="chk3rd">修改品类</li>
+							<li><input type="checkbox" value="查询品类明细" class="chk3rd">查询品类明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="台账费用项目" class="chk2nd">台账费用项目</span>
+						<ol>
+							<li><input type="checkbox" value="添加在柜信息" class="chk3rd">添加在柜信息</li>
+							<li><input type="checkbox" value="删除在柜信息" class="chk3rd">删除在柜信息</li>
+							<li><input type="checkbox" value="修改在柜信息" class="chk3rd">修改在柜信息</li>
+							<li><input type="checkbox" value="查询在柜信息明细" class="chk3rd">查询在柜信息明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="台账收款方式" class="chk2nd">台账收款方式</span>
+						<ol>
+							<li><input type="checkbox" value="添加对应关系" class="chk3rd">添加对应关系</li>
+							<li><input type="checkbox" value="删除对应关系" class="chk3rd">删除对应关系</li>
+							<li><input type="checkbox" value="修改对应关系" class="chk3rd">修改对应关系</li>
+							<li><input type="checkbox" value="查询对应关系明细" class="chk3rd">查询对应关系明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="费用类型维护" class="chk2nd">费用类型维护</span>
+						<ol>
+							<li><input type="checkbox" value="添加供应商" class="chk3rd">添加供应商</li>
+							<li><input type="checkbox" value="删除供应商" class="chk3rd">删除供应商</li>
+							<li><input type="checkbox" value="修改供应商" class="chk3rd">修改供应商</li>
+							<li><input type="checkbox" value="查询供应商明细" class="chk3rd">查询供应商明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="费用关系维护" class="chk2nd">费用关系维护</span>
+						<ol>
+							<li><input type="checkbox" value="添加品牌" class="chk3rd">添加品牌</li>
+							<li><input type="checkbox" value="删除品牌" class="chk3rd">删除品牌</li>
+							<li><input type="checkbox" value="修改品牌" class="chk3rd">修改品牌</li>
+							<li><input type="checkbox" value="查询品牌明细" class="chk3rd">查询品牌明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="支付方式维护" class="chk2nd">支付方式维护</span>
+						<ol>
+							<li><input type="checkbox" value="添加品类" class="chk3rd">添加品类</li>
+							<li><input type="checkbox" value="删除品类" class="chk3rd">删除品类</li>
+							<li><input type="checkbox" value="修改品类" class="chk3rd">修改品类</li>
+							<li><input type="checkbox" value="查询品类明细" class="chk3rd">查询品类明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="费用费率维护" class="chk2nd">费用费率维护</span>
+						<ol>
+							<li><input type="checkbox" value="添加在柜信息" class="chk3rd">添加在柜信息</li>
+							<li><input type="checkbox" value="删除在柜信息" class="chk3rd">删除在柜信息</li>
+							<li><input type="checkbox" value="修改在柜信息" class="chk3rd">修改在柜信息</li>
+							<li><input type="checkbox" value="查询在柜信息明细" class="chk3rd">查询在柜信息明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="费用台账管理" class="chk2nd">费用台账管理</span>
+						<ol>
+							<li><input type="checkbox" value="添加对应关系" class="chk3rd">添加对应关系</li>
+							<li><input type="checkbox" value="删除对应关系" class="chk3rd">删除对应关系</li>
+							<li><input type="checkbox" value="修改对应关系" class="chk3rd">修改对应关系</li>
+							<li><input type="checkbox" value="查询对应关系明细" class="chk3rd">查询对应关系明细</li>
+						</ol>
+					</li>
+				</ul>
+			</dd>
+		</dl>
+
+		<dl class="clearfix">
+			<dt><input type="checkbox" value="结算管理" class="chk1st">结算管理</dt>
+			<dd>
+				<ul>
+					<li>
+						<span><input type="checkbox" value="费用计算" class="chk2nd">费用计算</span>
+						<ol>
+							<li><input type="checkbox" value="添加费用" class="chk3rd">添加费用</li>
+							<li><input type="checkbox" value="删除费用" class="chk3rd">删除费用</li>
+							<li><input type="checkbox" value="修改费用" class="chk3rd">修改费用</li>
+							<li><input type="checkbox" value="查询费用明细" class="chk3rd">查询费用明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="手工上载费用" class="chk2nd">手工上载费用</span>
+						<ol>
+							<li><input type="checkbox" value="添加手工费用" class="chk3rd">添加手工费用</li>
+							<li><input type="checkbox" value="删除手工费用" class="chk3rd">删除手工费用</li>
+							<li><input type="checkbox" value="修改手工费用" class="chk3rd">修改手工费用</li>
+							<li><input type="checkbox" value="查询手工费用明细" class="chk3rd">查询手工费用明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="联营结算" class="chk2nd">联营结算</span>
+						<ol>
+							<li><input type="checkbox" value="添加联营结算" class="chk3rd">添加联营结算</li>
+							<li><input type="checkbox" value="删除联营结算" class="chk3rd">删除联营结算</li>
+							<li><input type="checkbox" value="修改联营结算" class="chk3rd">修改联营结算</li>
+							<li><input type="checkbox" value="查询联营结算明细" class="chk3rd">查询联营结算明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="租赁结算" class="chk2nd">租赁结算</span>
+						<ol>
+							<li><input type="checkbox" value="添加租赁结算" class="chk3rd">添加租赁结算</li>
+							<li><input type="checkbox" value="删除租赁结算" class="chk3rd">删除租赁结算</li>
+							<li><input type="checkbox" value="修改租赁结算" class="chk3rd">修改租赁结算</li>
+							<li><input type="checkbox" value="查询租赁结算明细" class="chk3rd">查询租赁结算明细</li>
+						</ol>
+					</li>
+				</ul>
+			</dd>
+		</dl>
+
+		<dl class="clearfix">
+			<dt><input type="checkbox" value="对帐管理" class="chk1st">对帐管理</dt>
+			<dd>
+				<ul>
+					<li>
+						<span><input type="checkbox" value="专柜半手工对账" class="chk2nd">专柜半手工对账</span>
+						<ol>
+							<li><input type="checkbox" value="添加半手工对账" class="chk3rd">添加半手工对账</li>
+							<li><input type="checkbox" value="删除半手工对账" class="chk3rd">删除半手工对账</li>
+							<li><input type="checkbox" value="修改半手工对账" class="chk3rd">修改半手工对账</li>
+							<li><input type="checkbox" value="查询半手工对账明细" class="chk3rd">查询半手工对账明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="系统自动对账" class="chk2nd">系统自动对账</span>
+						<ol>
+							<li><input type="checkbox" value="添加自动对账" class="chk3rd">添加自动对账</li>
+							<li><input type="checkbox" value="删除自动对账" class="chk3rd">删除自动对账</li>
+							<li><input type="checkbox" value="修改自动对账" class="chk3rd">修改自动对账</li>
+							<li><input type="checkbox" value="查询自动对账明细" class="chk3rd">查询自动对账明细</li>
+						</ol>
+					</li>
+				</ul>
+			</dd>
+		</dl>
+
+		<dl class="clearfix">
+			<dt><input type="checkbox" value="客服系统" class="chk1st">客服系统</dt>
+			<dd>
+				<ul>
+					<li>
+						<span><input type="checkbox" value="订单查询" class="chk2nd">订单查询</span>
+						<ol>
+							<li><input type="checkbox" value="添加订单查询" class="chk3rd">添加订单查询</li>
+							<li><input type="checkbox" value="删除订单查询" class="chk3rd">删除订单查询</li>
+							<li><input type="checkbox" value="修改订单查询" class="chk3rd">修改订单查询</li>
+							<li><input type="checkbox" value="查询订单查询明细" class="chk3rd">查询订单查询明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="修改积分" class="chk2nd">修改积分</span>
+						<ol>
+							<li><input type="checkbox" value="添加修改积分" class="chk3rd">添加修改积分</li>
+							<li><input type="checkbox" value="删除修改积分" class="chk3rd">删除修改积分</li>
+							<li><input type="checkbox" value="修改修改积分" class="chk3rd">修改修改积分</li>
+							<li><input type="checkbox" value="查询修改积分明细" class="chk3rd">查询修改积分明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="积分查询" class="chk2nd">积分查询</span>
+						<ol>
+							<li><input type="checkbox" value="添加积分查询" class="chk3rd">添加积分查询</li>
+							<li><input type="checkbox" value="删除积分查询" class="chk3rd">删除积分查询</li>
+							<li><input type="checkbox" value="修改积分查询" class="chk3rd">修改积分查询</li>
+							<li><input type="checkbox" value="查询积分查询明细" class="chk3rd">查询积分查询明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="优惠券派发" class="chk2nd">优惠券派发</span>
+						<ol>
+							<li><input type="checkbox" value="添加优惠券派发" class="chk3rd">添加优惠券派发</li>
+							<li><input type="checkbox" value="删除优惠券派发" class="chk3rd">删除优惠券派发</li>
+							<li><input type="checkbox" value="修改优惠券派发" class="chk3rd">修改优惠券派发</li>
+							<li><input type="checkbox" value="查询优惠券派发明细" class="chk3rd">查询优惠券派发明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="优惠券核销" class="chk2nd">优惠券核销</span>
+						<ol>
+							<li><input type="checkbox" value="添加优惠券核销" class="chk3rd">添加优惠券核销</li>
+							<li><input type="checkbox" value="删除优惠券核销" class="chk3rd">删除优惠券核销</li>
+							<li><input type="checkbox" value="修改优惠券核销" class="chk3rd">修改优惠券核销</li>
+							<li><input type="checkbox" value="查询优惠券核销明细" class="chk3rd">查询优惠券核销明细</li>
+						</ol>
+					</li>
+					<li>
+						<span><input type="checkbox" value="会员信息修改" class="chk2nd">会员信息修改</span>
+						<ol>
+							<li><input type="checkbox" value="添加会员信息" class="chk3rd">添加会员信息</li>
+							<li><input type="checkbox" value="删除会员信息" class="chk3rd">删除会员信息</li>
+							<li><input type="checkbox" value="修改会员信息" class="chk3rd">修改会员信息</li>
+							<li><input type="checkbox" value="查询会员信息明细" class="chk3rd">查询会员信息明细</li>
+						</ol>
+					</li>
+				</ul>
+			</dd>
+		</dl>
+	</div>
+</div>
+<script src="../../js/jquery-1.8.3.min.js"></script>
+<script src="../../js/jquery.placeholder.min.js"></script>
+<script src="../../js/jquery.chosen.min.js"></script>
+<script src="../../js/layer/layer.js"></script>
+<script src="../../js/laydate/laydate.js"></script>
+<script src="../../js/main.js"></script>
+<script>
+//添加
+function addFunc(){
+	layer.open({
+		type: 1,
+		btn:['确定','取消'],
+		title: '新增角色',
+		shade: 0.6,
+		moveType: 1,
+		shift: -1,
+		content:'<div class="form-view alert-form-view">'+
+					'<div class="form-group">'+
+						'<label class="label"><span class="text-danger">* </span>角色名称：</label>'+
+						'<div class="row">'+
+						'<input type="text" size="30" class="ipt form-control form-not-null" placeholder="角色名称">'+
+						'</div>'+
+					'</div>'+
+				'</div>',
+		success: function(layero, index){
+			layero.find('.layui-layer-btn0').addClass('disabled');//打开弹窗后给确定按钮添加disabled
+			//必填字段验证
+			$(".alert-form-view").find(".form-not-null").on('input propertychange', function() {
+				$('.alert-form-view').find('.form-not-null').each(function(index, el) {
+					var checkInput = $(this).val();
+					if(checkInput == ""){
+						layero.find('.layui-layer-btn0').addClass('disabled');
+					}else{
+						layero.find('.layui-layer-btn0').removeClass('disabled');
+					}
+				})
+			})
+		},
+		//点击确认按钮方法
+		yes: function(index, layero){
+			//点击确认后添加disabled 防止表单重复提交
+			layero.find('.layui-layer-btn0').addClass('disabled').text('提交中...');
+			//后台返回提交结果 并执行提示词和关闭弹层
+		    layer.msg('新增成功');
+		    layer.close(index);
+		}
+	});
+}
+//修改
+function modifyFunc(trID){
+	layer.open({
+		type: 1,
+		btn:['保存','取消'],
+		title: '修改角色权限',
+		shade: 0.6,
+		moveType: 1,
+		shift: -1,
+		area: ['480px'],
+		content:$('#permission'),
+		success: function (){
+			multiSelect();
+		},
+		yes: function(index, layero){
+			var str="您选择的权限有：\r\n";
+			layero.find("input:checkbox:checked").each(function(){
+				str += $(this).val()+"\r\n";
+			})
+			layer.alert(str);
+		    layer.close(index);
+		}
+	});
+}
+$(function(){
+	//删除
+	$('.j_delete').on('click', function(){
+		that = $(this);
+		layer.confirm('确认要删除该角色?', {icon: 3, title:'提示'}, function(index){
+			that.parents('tr').remove();
+			layer.msg('删除成功');
+			layer.close(index);
+		});
+	})
+	//三级目录
+	$(".tabs-permission dl").on('click', function() {
+		$(this).addClass('active').siblings().removeClass('active');
+	});
+	$(".tabs-permission ul > li").on('click', function() {
+		$(this).addClass('active').siblings().removeClass('active');
+	});
+	$(".tabs-permission dl dt > input").change(function() {
+		if($(this).prop('checked')){
+			$(this).parent("dt").siblings('dd').find('input:checkbox').prop("checked",true);
+		}else{
+			$(this).parent("dt").siblings('dd').find('input:checkbox').prop("checked",false);
+		}
+	});
+});
+//全选\反选
+function multiSelect(){
+	//一级全选\取消选择
+	$('.chk1st').on('change', function() {
+		var $this = $(this).closest('dl');
+		var obj2nd = $this.find('.chk2nd');
+		var obj3rd = $this.find('.chk3rd');
+		var value = this.checked;
+		if(value == false) {
+			for(var i = 0; i < obj2nd.length; i++) {
+				obj2nd[i].checked = false;
+			}
+			for(var i = 0; i < obj3rd.length; i++) {
+				obj3rd[i].checked = false;
+			}
+		}else{
+			for(var i = 0; i < obj2nd.length; i++) {
+				obj2nd[i].checked = true;
+			}
+			for(var i = 0; i < obj3rd.length; i++) {
+				obj3rd[i].checked = true;
+			}
+		}
+	});
+
+	//二级全选\取消选择
+	$('.chk2nd').on('change', function() {
+		var $this = $(this).closest('dl');
+		var $that = $(this).closest('li');
+		var obj2nd = $this.find('.chk2nd');
+		var obj3rd = $that.find('.chk3rd');
+		var value = this.checked;
+		var count = obj2nd.length;
+		var selectCount = 0;
+		if(value == false) {
+			for(var i = 0; i < obj3rd.length; i++) {
+				obj3rd[i].checked = false;
+			}
+		}else{
+			for(var i = 0; i < obj3rd.length; i++) {
+				obj3rd[i].checked = true;
+			}
+		}
+		for(var i = 0; i < count; i++) {
+			if(obj2nd[i].checked == true){
+				selectCount++;
+			}
+		}
+		if(count == selectCount) {
+			$this.find('.chk1st').prop('checked',true);
+		}else{
+			$this.find('.chk1st').prop('checked',false);
+		}
+	});
+
+	//三级全选\取消选择
+	$('.chk3rd').on('change', function() {
+		var $this = $(this).parents('li');
+		var $that = $(this).closest('dl');
+		var obj3rd = $this.find('.chk3rd');
+		var obj3rdul = $that.find('.chk3rd');
+		var count = obj3rd.length;
+		var countall = obj3rdul.length;
+		var selectCount = 0;
+		var selectCountall = 0;
+		for(var i = 0; i < count; i++) {
+			if(obj3rd[i].checked == true){
+				selectCount++;
+			}
+		}
+		if(count == selectCount) {
+			$this.find('.chk2nd').prop('checked',true);
+		}else{
+			$this.find('.chk2nd').prop('checked',false);
+		}
+
+		for(var i = 0; i < countall; i++) {
+			if(obj3rdul[i].checked == true){
+				selectCountall++;
+			}
+		}
+		if(countall == selectCountall) {
+			$that.find('.chk1st').prop('checked',true);
+		}else{
+			$that.find('.chk1st').prop('checked',false);
+		}
+	});
+}
+</script>
+</body>
+</html>

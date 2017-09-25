@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>上品折扣后台管理</title>
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/chosen.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/skins.css">
+</head>
+
+<body>
+<div class="main-page">
+    <div class="mt clearfix">
+        <div class="search-form">
+            <form class="form-inline">
+                <div class="form-group">
+                    <select class="select form-control drop-select" data-placeholder="门店名称">
+                        <option value="0"></option>
+                        <option value="1">1001_新亚奥旗舰店</option>
+                        <option value="2">1002_五棵松店</option>
+                        <option value="3">1003_草桥店</option>
+                        <option value="4">1004_回龙观店</option>
+                        <option value="5">1005_王府井店</option>
+                        <option value="6">1006_中关村店</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select class="select form-control drop-select" data-placeholder="活动ID">
+                        <option value="0"></option>
+                        <option value="0">15876</option>
+                        <option value="1">15627</option>
+                        <option value="3">15625</option>
+                        <option value="2">15546</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select class="select form-control drop-select" data-placeholder="品牌ID">
+                        <option value="0"></option>
+                        <option value="1">10085_纽百伦</option>
+                        <option value="2">10086_KingCamp</option>
+                        <option value="1">10087_纽百伦</option>
+                        <option value="2">10088_KingCamp</option>
+                        <option value="1">11285_纽百伦</option>
+                        <option value="2">17981_KingCamp</option>
+                        <option value="1">23415_纽百伦</option>
+                        <option value="2">19874_KingCamp</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select class="select form-control drop-select" data-placeholder="供应商ID">
+                        <option value="0"></option>
+                        <option value="1">A100001_山大盛德门店庆</option>
+                        <option value="2">A100002_山大盛德</option>
+                        <option value="3">A100003_山大盛德</option>
+                        <option value="4">A100004_山大盛德</option>
+                        <option value="5">A100005_山大盛德</option>
+                        <option value="6">A100006_没舛酷察多大事</option>
+                        <option value="7">A100007_山大盛德</option>
+                        <option value="8">A100008_山大盛德</option>
+                        <option value="9">A100009_山大盛德</option>
+                        <option value="10">A100010_山大盛德</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select class="select form-control drop-select" data-placeholder="活动状态">
+                        <option value="0"></option>
+                        <option value="1">待审核</option>
+                        <option value="2">已结束</option>
+                        <option value="3">进行中</option>
+                        <option value="4">作废</option>
+                        <option value="5">进行中</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select class="select form-control drop-select" data-placeholder="结算方式">
+                        <option value="0"></option>
+                        <option value="1">全部</option>
+                        <option value="1">销售价</option>
+                        <option value="2">非销售价</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">活动时间：</label>
+                    <input type="text" id="startDate" name="startDate" size="13" class="ipt form-control laydate-icon"><span class="date-step-span">至</span>
+                    <input type="text" id="endDate" name="endDate" size="13" class="ipt form-control laydate-icon">
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-default">查询</button>
+                    <button type="button" class="btn btn-default" onclick="resetFilter();">重置</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="mt clearfix">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>活动ID</th>
+                <th>活动名称</th>
+                <th>开始时间</th>
+                <th>结束时间</th>
+                <th>活动内容</th>
+                <th>活动状态</th>
+                <th>创建人</th>
+                <th>审核人</th>
+                <th class="text-right">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>15876</td>
+                <td>会员月第二波新粉丝</td>
+                <td>2016-08-12 16:21:08</td>
+                <td>2016-08-17 23:59:59</td>
+                <td>送优惠券</td>
+                <td>待审核</td>
+                <td>zhangxun</td>
+                <td>zhangxun</td>
+                <td class="text-right">
+                    <a href="javascript:modifyFunc();">修改</a><span class="text-explode">|</span>
+                    <a href="javascript:layer.confirm('确认审核活动?', {icon: 3, title:'提示'}, function(index){layer.msg('审核成功');layer.close(index);});">审核</a><span class="text-explode">|</span>
+                    <a href="javascript:layer.confirm('确认作废活动?', {icon: 3, title:'提示'}, function(index){layer.msg('作废成功');layer.close(index);});">作废</a>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="9">
+                    <div class="pull-right page-box">
+                        <div class="pagination-info">共有1条，每页显示：20条</div>
+                        <ul class="pagination">
+                            <li class="disabled" page-index="1"><a>«</a></li>
+                            <li class="disabled" page-index="0"><a>‹</a></li>
+                            <li class="active" page-index="1"><a>1</a></li>
+                            <li page-index="2"><a>2</a></li>
+                            <li page-index="3"><a>3</a></li>
+                            <li page-index="4"><a>4</a></li>
+                            <li class="disabled" page-index="2"><a>›</a></li>
+                            <li class="disabled" page-index="1"><a>»</a></li>
+                        </ul>
+                        <div class="pagination-goto">
+                            <input type="text" class="ipt form-control" id="gotoPageNo">
+                            <button type="button" class="btn btn-default" id="goBtn">GO</button>
+                            <input type="hidden" id="totalCount" name="totalCount" value="1">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="mt clearfix">
+        <div class="page-tip">
+            <b>温馨提示：</b>
+            <p>• 原模板中“色系”列，不再需要填写；</p>
+            <p>• 原模板中尺码填写有三列“国标尺码、企业尺码1、企业尺码2”，现只保留一列“尺码”列。填写规则要认真查看供应商主数据采集模板中“主数据模板录入规则”哦。</p>
+            <p>• 请您每次填写新增货品信息时，一定要在供应商服务平台右上角“资料下载”中下载最新版供应商主数据采集模板填写。</p>
+        </div>
+    </div>
+    <div class="no-data-info"><i class="fa"></i><span class="ng-binding">没有查询到符合条件的结果，请尝试更改关键词或其它选项</span></div>
+</div>
+<script src="../../js/jquery-1.8.3.min.js"></script>
+<script src="../../js/jquery.placeholder.min.js"></script>
+<script src="../../js/jquery.chosen.min.js"></script>
+<script src="../../js/layer/layer.js"></script>
+<script src="../../js/laydate/laydate.js"></script>
+<script src="../../js/main.js"></script>
+<script>
+    //修改
+    function modifyFunc(trID){
+        layer.open({
+            type: 1,
+            btn:['保存','取消'],
+            title: '修改活动',
+            shade: 0.6,
+            moveType: 1,
+            shift: -1,
+            area:['500px'],
+            content:'<div class="form-view alert-form-view">'+
+            '<div class="form-group">'+
+            '<label class="label"><span class="text-danger">* </span>活动名称：</label>'+
+            '<div class="row">'+
+            '<input type="text" size="30" class="ipt ipt-w300 form-control" value="活动名称">'+
+            '</div>'+
+            '</div>'+
+            '<div class="form-group">'+
+            '<label class="label"><span class="text-danger">* </span>活动时间：</label>'+
+            '<div class="row">'+
+            '<input id="modifyStartDate" type="text" size="13" class="ipt ipt-w120 form-control laydate-icon"><span class="date-step-span">至</span><input id="modifyEndDate" type="text" size="13" class="ipt ipt-w120 form-control laydate-icon">'+
+            '</div>'+
+            '</div>'+
+            '<div class="form-group">'+
+            '<label class="label"><span class="text-danger">* </span>活动内容：</label>'+
+            '<div class="row">'+
+            '<select class="select sel-w300 form-control drop-select">'+
+            '<option value="1">送优惠券</option>'+
+            '<option value="2">送肄业券</option>'+
+            '<option value="3">送实物兑换券</option>'+
+            '</select>'+
+            '</div>'+
+            '</div>'+
+            '<div class="form-group">'+
+            '<label class="label"><span class="text-danger">* </span>优惠券前缀：</label>'+
+            '<div class="row">'+
+            '<select class="select sel-w300 form-control drop-select">'+
+            '<option value="1">KK</option>'+
+            '<option value="2">TV</option>'+
+            '<option value="3">R2</option>'+
+            '</select>'+
+            '</div>'+
+            '</div>'+
+            '<div class="form-group">'+
+            '<label class="label"><span class="text-danger">* </span>肄业券链接：</label>'+
+            '<div class="row">'+
+            '<input type="text" size="30" class="ipt ipt-w300 form-control" value="请输入肄业券链接">'+
+            '</div>'+
+            '</div>'+
+            '<div class="form-group">'+
+            '<label class="label"><span class="text-danger">* </span>上传券图片：</label>'+
+            '<div class="row">'+
+            '<input class="file" type="file">'+
+            '</div>'+
+            '</div>'+
+            '<div class="form-group">'+
+            '<label class="label">指定用户：</label>'+
+            '<div class="row">'+
+            '<label class="rc"><input type="checkbox">初级会员</label>'+
+            '<label class="rc"><input type="checkbox">中级会员</label>'+
+            '<label class="rc"><input type="checkbox">高级会员</label>'+
+            '</div>'+
+            '</div>'+
+            '<div class="form-group">'+
+            '<label class="label">活动说明：</label>'+
+            '<div class="row">'+
+            '<textarea class="textarea" form-groups="3" cols="" value="请输入活动说明，用于展示在点击券后的弹窗"></textarea>'+
+            '</div>'+
+            '</div>'+
+            '</div>',
+            //弹出成功回调方法
+            success: function(layero, index){
+                layero.find('.layui-layer-btn0').addClass('disabled');//打开弹窗后给确定按钮添加disabled
+                dropSelect();
+                formNotNull();
+                //上柜、撤柜时间
+                var modifyStart = {
+                    elem: '#modifyStartDate',
+                    event: 'focus',
+                    choose: function(datas){
+                        modifyEnd.min = datas; //开始日选好后，重置结束日的最小日期
+                        modifyEnd.modifyStart = datas //将结束日的初始值设定为开始日
+                    }
+                };
+                var modifyEnd = {
+                    elem: '#modifyEndDate',
+                    event: 'focus',
+                    choose: function(datas){
+                        modifyStart.max = datas; //结束日选好后，重置开始日的最大日期
+                    }
+                };
+                laydate(modifyStart);
+                laydate(modifyEnd);
+            },
+            //点击确认按钮方法
+            yes: function(index, layero){
+                //校验表单内容错误给父级添加has-error
+                // $('#newSupplierName').parents('.form-group').addClass('has-error');
+                //点击确认后添加disabled 防止表单重复提交
+                layero.find('.layui-layer-btn0').addClass('disabled').text('提交中...');
+                //后台返回提交结果 并执行提示词和关闭弹层
+                layer.msg('添加成功');
+                layer.close(index);
+            }
+        });
+    }
+    //上柜、撤柜时间
+    var start = {
+        elem: '#startDate',
+        event: 'focus',
+        choose: function(datas){
+            end.min = datas; //开始日选好后，重置结束日的最小日期
+            end.start = datas //将结束日的初始值设定为开始日
+        }
+    };
+    var end = {
+        elem: '#endDate',
+        event: 'focus',
+        choose: function(datas){
+            start.max = datas; //结束日选好后，重置开始日的最大日期
+        }
+    };
+    laydate(start);
+    laydate(end);
+    $("#uploadImg").change(function(event) {
+        var imgSrc = $(this).val();
+    });
+
+</script>
+</body>
+</html>

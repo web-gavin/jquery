@@ -1,0 +1,99 @@
+@font-face {
+	font-family: "fafont";
+	src: url('../fonts/fafont.eot'); /* IE9*/
+	src: url('../fonts/fafont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	url('../fonts/fafont.woff') format('woff'), /* chrome, firefox */
+	url('../fonts/fafont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+	url('../fonts/fafont.svg#fafont') format('svg'); /* iOS 4.1- */
+}
+.fa { display: inline-block; padding: 0 3px; font-family: "fafont" !important; font-size: 14px; font-style: normal; -webkit-font-smoothing: antialiased; -webkit-text-stroke-width: 0.2px; -moz-osx-font-smoothing: grayscale;}
+.fa-feiyongleixing:before { content: "\e600"; }
+.fa-close:before, .fa-remove:before { content: "\e646"; }
+.fa-shezhi:before { content: "\e68a"; }
+.fa-internet:before { content: "\e6c0"; }
+.fa-right:before { content: "\e6a3"; }
+.fa-lock:before { content: "\e6c1"; }
+.fa-youhuiquan:before { content: "\e638"; }
+.fa-daogou:before { content: "\e610"; }
+.fa-down:before { content: "\e703"; }
+.fa-padzixun:before { content: "\e608"; }
+.fa-zulin:before { content: "\e61a"; }
+.fa-img:before { content: "\e61f"; }
+.fa-padxinxi:before { content: "\e668"; }
+.fa-wanshanxinxi:before { content: "\e60a"; }
+.fa-backwardfill:before { content: "\e74d"; }
+.fa-forwardfill:before { content: "\e74e"; }
+.fa-lianyingjiesuan:before { content: "\e609"; }
+.fa-yonghu:before { content: "\e6f4"; }
+.fa-zhifufangshi:before { content: "\e62b"; }
+.fa-kaiguan:before { content: "\e755"; }
+.fa-upload:before { content: "\e75d"; }
+.fa-dingdanchaxun:before { content: "\e685"; }
+.fa-padpici:before { content: "\e61b"; }
+.fa-quanxian:before { content: "\e65a"; }
+.fa-menu:before { content: "\e89c"; }
+.fa-dengji:before { content: "\e601"; }
+.fa-gongyingshang:before { content: "\e629"; }
+.fa-jisuan:before { content: "\e64c"; }
+.fa-zidongduizhang:before { content: "\e637"; }
+.fa-cuxiao:before { content: "\e665"; }
+.fa-xiaoshoubaobiao:before { content: "\e669"; }
+.fa-baobiaomingxi:before { content: "\e623"; }
+.fa-pinpai:before { content: "\e60b"; }
+.fa-huiyuan:before { content: "\e615"; }
+.fa-huifu:before { content: "\e630"; }
+.fa-pinlei:before { content: "\e60d"; }
+.fa-xiala:before { content: "\e79b"; }
+.fa-feilv:before { content: "\e62a"; }
+.fa-jifen:before { content: "\e624"; }
+.fa-koulv:before { content: "\e61c"; }
+.fa-zaiguixinxi:before { content: "\e698"; }
+.fa-xiugaijifen:before { content: "\e70e"; }
+.fa-word:before { content: "\e61e"; }
+.fa-jiesuan:before { content: "\e62d"; }
+.fa-diaobo:before { content: "\e60c"; }
+.fa-powerpoint:before { content: "\ed6e"; }
+.fa-xinxixiugai:before { content: "\e607"; }
+.fa-chakan:before { content: "\e603"; }
+.fa-juese:before { content: "\e616"; }
+.fa-kefu:before { content: "\e6df"; }
+.fa-shougongluru:before { content: "\e633"; }
+.fa-bangdingpad:before { content: "\e66f"; }
+.fa-shouyinbiao:before { content: "\e653"; }
+.fa-date:before { content: "\e650"; }
+.fa-shougongduizhang:before { content: "\e60e"; }
+.fa-xinxizhuce:before { content: "\e64a"; }
+.fa-yiyongquan:before { content: "\e61d"; }
+.fa-tianjia:before { content: "\e775"; }
+.fa-pad:before { content: "\e604"; }
+.fa-huiyuan1:before { content: "\e62c"; }
+.fa-jichushuju:before { content: "\e649"; }
+.fa-wechat:before { content: "\e648"; }
+.fa-shenhe:before { content: "\e620"; }
+.fa-piliangshoukuan:before { content: "\e622"; }
+.fa-duiyingguanxi:before { content: "\e60f"; }
+.fa-xiazai:before { content: "\e62f"; }
+.fa-duobeijifen:before { content: "\e611"; }
+.fa-piliangshangzai:before { content: "\e621"; }
+.fa-songquan:before { content: "\e606"; }
+.fa-excel:before { content: "\e64f"; }
+.fa-jifenchaxun:before { content: "\e634"; }
+.fa-feiyongguanxi:before { content: "\e605"; }
+.fa-baobiao:before { content: "\e625"; }
+.fa-zulingjiesuan:before { content: "\e63b"; }
+.fa-dixian:before { content: "\e7ab"; }
+.fa-youhuiquanguanli:before { content: "\e81d"; }
+.fa-weihu:before { content: "\e619"; }
+.fa-baobiaohuizong:before { content: "\e6f7"; }
+.fa-zujin:before { content: "\e717"; }
+.fa-duizhang:before { content: "\e612"; }
+.fa-padluru:before { content: "\e617"; }
+.fa-shoukuanfangshi:before { content: "\e631"; }
+.fa-txt:before { content: "\e65c"; }
+.fa-zhushuju:before { content: "\e68b"; }
+.fa-feiyong:before { content: "\e613"; }
+.fa-taizhang:before { content: "\e614"; }
+.fa-shangzhaifeiyong:before { content: "\e618"; }
+.fa-guanzhuhuifu:before { content: "\e65e"; }
+.fa-quanma:before { content: "\e628"; }
+

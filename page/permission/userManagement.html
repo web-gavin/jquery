@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>上品折扣后台管理</title>
+<link rel="stylesheet" href="../../css/reset.css">
+<link rel="stylesheet" href="../../css/chosen.css">
+<link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="../../css/skins.css">
+</head>
+
+<body>
+	<div class="main-page">
+		<div class="btn-group">
+			<a href="javascript:addFunc();" class="btn btn-primary">新增用户</a>
+		</div>
+		<div class="mt clearfix">
+			<div class="search-form">
+			    <form class="form-inline">
+	                <div class="form-group">
+		                <input type="text" class="ipt form-control" placeholder="用户名">
+	                </div>
+					<div class="form-group">
+		                <button type="button" class="btn btn-default">查询</button>
+		                <button type="button" class="btn btn-default" onclick="resetFilter();">重置</button>
+		            </div>
+				</form>
+			</div>
+		</div>
+		<div class="mt clearfix">
+			<div class="tableWrap">
+		        <table class="table table-hover">
+		            <thead>
+			            <tr>
+			                <th>用户名</th>
+			                <th>手机号</th>
+			                <th>邮箱</th>
+			                <th>注册日期</th>
+			                <th class="text-right">操作</th>
+			            </tr>
+		            </thead>
+		            <tbody>
+		            	<tr>
+		            		<td>kanglei</td>
+		            		<td>13810179049</td>
+		            		<td>kanglei@shopin.cn</td>
+		            		<td>2016-06-18 10:37:11</td>
+		            		<td class="text-right">
+		            			<a href="javascript:authorize();">授权</a><span class="text-explode">|</span>
+		            			<a href="javascript:editUser();">编辑</a><span class="text-explode">|</span>
+		            			<a href="javascript:resetPassword();">重置密码</a><span class="text-explode">|</span>
+		            			<a href="javascript:deleteUser();">删除</a>
+		            		</td>
+		            	</tr>
+		            </tbody>
+		        </table>
+		    </div>
+		</div>
+		<div class="mt clearfix">
+			<div class="page-tip">
+				<b>温馨提示：</b>
+				<p>• 原模板中“色系”列，不再需要填写；</p>
+				<p>• 原模板中尺码填写有三列“国标尺码、企业尺码1、企业尺码2”，现只保留一列“尺码”列。填写规则要认真查看供应商主数据采集模板中“主数据模板录入规则”哦。</p>
+				<p>• 请您每次填写新增货品信息时，一定要在供应商服务平台右上角“资料下载”中下载最新版供应商主数据采集模板填写。</p>
+			</div>
+		</div>
+		<div class="no-data-info"><i class="fa"></i><span class="ng-binding">没有查询到符合条件的结果，请尝试更改关键词或其它选项</span></div>
+	</div>
+<script src="../../js/jquery-1.8.3.min.js"></script>
+<script src="../../js/jquery.placeholder.min.js"></script>
+<script src="../../js/jquery.chosen.min.js"></script>
+<script src="../../js/layer/layer.js"></script>
+<script src="../../js/laydate/laydate.js"></script>
+<script src="../../js/main.js"></script>
+<script>
+//添加
+function addFunc(){
+	layer.open({
+		type: 1,
+		btn:['确定','取消'],
+		title: '添加用户',
+		shade: 0.6,
+		moveType: 1,
+		shift: -1,
+		area:['430px'],
+		content:'<form class="layui-form" id="insert-form">'+
+        '<div class="form-view alert-form-view">'+
+        '<div class="form-group">'+
+        '<label class="label"><span class="text-danger">* </span>用户名：</label>'+
+        '<div class="row">'+
+        '<input id="addUserUsername" name="name" type="text" size="30" class="ipt form-control form-not-null">'+
+        '<p id="addUserUsernameError" class="help-block"></p>'+
+        '</div>'+
+        '</div>'+
+        '<div class="form-group">'+
+        '<label class="label"><span class="text-danger">* </span>密码：</label>'+
+        '<div class="row">'+
+        '<input id="addUserPwd" name="pwd" type="text" size="30" class="ipt form-control form-not-null">'+
+        '<p id="addUserPwdError" class="help-block"></p>'+
+        '</div>'+
+        '</div>'+
+        '<div class="form-group">'+
+        '<label class="label"><span class="text-danger">* </span>手机号码：</label>'+
+        '<div class="row">'+
+        '<input id="addUserMobile" name="mobile" type="text" size="30" class="ipt form-control form-not-null">'+
+        '<p id="addUserMobileError" class="help-block"></p>'+
+        '</div>'+
+        '</div>'+
+        '<div class="form-group">'+
+        '<label class="label"><span class="text-danger">* </span>邮箱：</label>'+
+        '<div class="row">'+
+        '<input id="addUserEmail" name="email" type="text" size="30" class="ipt form-control form-not-null">'+
+        '<p id="addUserEmailError" class="help-block"></p><!-- 邮箱地址错误 -->'+
+        '</div>'+
+        '</div>'+
+        '</div>'+
+        '</form>',
+		//弹出成功回调方法
+		success: function(layero, index){
+			layero.find('.layui-layer-btn0').addClass('disabled');//打开弹窗后给确定按钮添加disabled
+			formNotNull();
+            $(".alert-form-view").find(".form-not-null").on('input propertychange', function() {
+                var abled = true;
+                var mobile = document.getElementById('addUserMobile').value;
+                var email = document.getElementById('addUserEmail').value;
+                var username = document.getElementById('addUserUsername').value;
+                var pwd = document.getElementById('addUserPwd').value;
+                if(!checkmobile(mobile)) {
+                    abled = false;
+                    $('#addUserMobileError').html("手机号不正确");
+                } else {
+                    $('#addUserMobileError').html("");
+                }
+                if(!checkemail(email)) {
+                    abled = false;
+                    $('#addUserEmailError').html("邮箱不正确");
+                } else {
+                    $('#addUserEmailError').html("");
+                }
+                if(username == '') {
+                    abled = false;
+                    $('#addUserUsernameError').html("用户名不可为空");
+                } else {
+                    $('#addUserUsernameError').html("");
+                }
+                if(pwd == '') {
+                    abled = false;
+                    $('#addUserPwdError').html("密码不可为空");
+                } else {
+                    $('#addUserPwdError').html("");
+                }
+                if(abled) {
+                    layero.find('.layui-layer-btn0').removeClass('disabled');
+                } else {
+                    layero.find('.layui-layer-btn0').addClass('disabled');
+                }
+            })
+		},
+		//点击确认按钮方法
+		yes: function(index, layero){
+			//校验表单内容错误给父级添加has-error
+			// $('#newSupplierName').parents('.form-group').addClass('has-error');
+			//点击确认后添加disabled 防止表单重复提交
+			layero.find('.layui-layer-btn0').addClass('disabled').text('提交中...');
+			//后台返回提交结果 并执行提示词和关闭弹层
+		    layer.msg('添加成功');
+		    layer.close(index);
+		}
+	});
+}
+//编辑权限
+function authorize(){
+	layer.open({
+		type: 1,
+		btn:['确定','取消'],
+		title: '授权设置',
+		shade: 0.6,
+		moveType: 1,
+		shift: -1,
+		area:['400px','300px'],
+		content:'<div class="authorize">'+
+			            '<ul>'+
+			            	'<li>授权　角色</li>'+
+			            	'<li><input id="authorize1" type="checkbox"><label for="authorize1">全局管理</label></li>'+
+			            	'<li><input id="authorize2" type="checkbox"><label for="authorize2">财务操作人员</label></li>'+
+			            	'<li><input id="authorize3" type="checkbox"><label for="authorize3">供应商</label></li>'+
+			            	'<li><input id="authorize4" type="checkbox"><label for="authorize4">采购订单操作人员</label></li>'+
+			            	'<li><input id="authorize5" type="checkbox"><label for="authorize5">合同操作人员</label></li>'+
+			            	'<li><input id="authorize6" type="checkbox"><label for="authorize6">数据小组</label></li>'+
+			            	'<li><input id="authorize7" type="checkbox"><label for="authorize7">用户管理员</label></li>'+
+			            	'<li><input id="authorize8" type="checkbox"><label for="authorize8">评价部介绍人员</label></li>'+
+			            	'<li><input id="authorize9" type="checkbox"><label for="authorize9">门店</label></li>'+
+			            	'<li><input id="authorize10" type="checkbox"><label for="authorize10">虚库管理员</label></li>'+
+			            	'<li><input id="authorize11" type="checkbox"><label for="authorize11">门店导购</label></li>'+
+			            	'<li><input id="authorize12" type="checkbox"><label for="authorize12">客服系统</label></li>'+
+			            '</ul>'+
+			    '</div>',
+		//弹出成功回调方法
+		//点击确认按钮方法
+		yes: function(index, layero){
+			layero.find('.layui-layer-btn0').addClass('disabled').text('提交中...');
+			//后台返回提交结果 并执行提示词和关闭弹层
+		    layer.msg('添加成功');
+		    layer.close(index);
+		}
+	});
+}
+//修改
+function editUser(){
+	layer.open({
+		type: 1,
+		btn:['保存','取消'],
+		title: '修改用户信息',
+		shade: 0.6,
+		moveType: 1,
+		shift: -1,
+        area:['430px'],
+		content:'<form class="layui-form" id="insert-form">'+
+        '<div class="form-view alert-form-view">'+
+        /*'<input id="userSidEdit" type="text" name="sid" style="display:none" value=' + record.sid + '>'+*/
+        '<div class="form-group">'+
+        '<label class="label"><span class="text-danger">* </span>用户名：</label>'+
+        '<div class="row">'+
+        '<input id="loginNameEdit" type="text" size="30" name="loginName" class="ipt form-control form-not-null" disabled>'+
+        '</div>'+
+        '</div>'+
+        '<div class="form-group">'+
+        '<label class="label"><span class="text-danger">* </span>手机号码：</label>'+
+        '<div class="row">'+
+        '<input id="userMobileEdit" type="text" size="30" name="mobile" class="ipt form-control form-not-null">'+
+        '<p id="userMobileEditError" class="help-block"></p>'+
+        '</div>'+
+        '</div>'+
+        '<div class="form-group">'+
+        '<label class="label"><span class="text-danger">* </span>邮箱：</label>'+
+        '<div class="row">'+
+        '<input id="userEmailEdit" type="text" size="30" name="email" class="ipt form-control form-not-null">'+
+        '<p id="userEmailEditError" class="help-block"></p>'+
+        '</div>'+
+        '</div>'+
+        '</div>'+
+        '</form>',
+        success: function(layero, index){
+            //layero.find('.layui-layer-btn0').addClass('disabled');//打开弹窗后给确定按钮添加disabled
+            //formNotNull();
+            $(".alert-form-view").find(".form-not-null").on('input propertychange', function() {
+                var abled = true;
+                var mobile = document.getElementById('userMobileEdit').value;
+                var email = document.getElementById('userEmailEdit').value;
+                if(!checkmobile(mobile)) {
+                    abled = false;
+                    $('#userMobileEditError').html("请输入正确的手机号");
+                } else {
+                    $('#userMobileEditError').html("");
+                }
+                if(!checkemail(email)) {
+                    abled = false;
+                    $('#userEmailEditError').html("请输入正确的邮箱");
+                } else {
+                    $('#userEmailEditError').html("");
+                }
+                if(abled) {
+                    layero.find('.layui-layer-btn0').removeClass('disabled');
+                } else {
+                    layero.find('.layui-layer-btn0').addClass('disabled');
+                }
+            })
+        },
+		yes: function(index, layero){
+		    layer.msg('修改成功');
+		    layer.close(index);
+		}
+	});
+}
+//重置密码
+function resetPassword(){
+	layer.confirm('确定要重置密码?', {icon: 3, title:'提示'}, function(index){
+		//重置密码
+		layer.msg('已重置密码');
+		layer.close(index);
+	});
+}
+//删除用户
+function deleteUser(){
+	layer.confirm('确定要删除此用户?', {icon: 3, title:'提示'}, function(index){
+		//重置密码
+		layer.msg('用户已成功删除');
+		layer.close(index);
+	});
+}
+//authorize  editUser    resetPassword  deleteUser
+</script>
+</body>
+</html>

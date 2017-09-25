@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>上品折扣后台管理</title>
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/chosen.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/skins.css">
+</head>
+
+<body>
+<div class="main-page">
+    <div class="mt clearfix">
+        <div class="search-form pull-left">
+            <form class="form-inline">
+                <div class="btn-group">
+                    <a href="javascript:addFunc();" class="btn btn-primary">导入数据</a>
+                </div>
+                <div class="form-group">
+                    <select class="select form-control drop-select" data-placeholder="门店">
+                        <option value="0"></option>
+                        <option value="1">1001_新亚奥旗舰店</option>
+                        <option value="2">1002_五棵松店</option>
+                        <option value="3">1003_草桥店</option>
+                        <option value="4">1004_回龙观店</option>
+                        <option value="5">1005_王府井店</option>
+                        <option value="6">1006_中关村店</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select class="select form-control drop-select" data-placeholder="供应商名称">
+                        <option value="0"></option>
+                        <option value="1">A100001_山大盛德门店庆</option>
+                        <option value="2">A100002_山大盛德</option>
+                        <option value="3">A100003_山大盛德</option>
+                        <option value="4">A100004_山大盛德</option>
+                        <option value="5">A100005_山大盛德</option>
+                        <option value="6">A100006_没舛酷察多大事</option>
+                        <option value="7">A100007_山大盛德</option>
+                        <option value="8">A100008_山大盛德</option>
+                        <option value="9">A100009_山大盛德</option>
+                        <option value="10">A100010_山大盛德</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select class="select form-control drop-select" data-placeholder="订单类型">
+                        <option value="0"></option>
+                        <option value="1">全部类型</option>
+                        <option value="2">联营采购订单</option>
+                        <option value="3">联营退货订单</option>
+                    </select>
+                </div>
+                <div class="form-group" id="enterDate">
+                    <label class="control-label">日期：</label>
+                    <input type="text" id="startDate1" name="startDate1" size="13" class="form-control laydate-icon ipt"><span class="date-step-span">至</span>
+                    <input type="text" id="endDate1" name="endDate1" size="13" class="form-control laydate-icon ipt">
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-default">查询</button>
+                    <button onclick="resetFilter()" type="button" class="btn btn-default">重置</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="mt clearfix">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th><input type="checkbox"></th>
+                <th>年份</th>
+                <th>月份</th>
+                <th>门店编码</th>
+                <th>门店名称</th>
+                <th>供应商编码</th>
+                <th>供应商名称</th>
+                <th>商标</th>
+                <th>品牌名称</th>
+                <th>经营模式</th>
+                <th>费用名称</th>
+                <th>费用金额</th>
+                <th>状态</th>
+                <th>收款编码</th>
+                <th>收款名称</th>
+                <th>录入人</th>
+                <th>录入日期</th>
+                <th>收款人</th>
+                <th>收款日期</th>
+                <th>备注</th>
+                <th class="text-right">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>2014</td>
+                <td>06</td>
+                <td>1001</td>
+                <td>王府井店</td>
+                <td>100128</td>
+                <td>北京华亭雨中贸易有限公司</td>
+                <td></td>
+                <td></td>
+                <td>联营</td>
+                <td>保证金</td>
+                <td>0.00</td>
+                <td>录入</td>
+                <td>0201</td>
+                <td>现金</td>
+                <td>REN.HL</td>
+                <td>2014-02-28</td>
+                <td>LIU.FAN</td>
+                <td>2017-09-01</td>
+                <td>已收款</td>
+                <td class="text-right">
+                    <a href="javascript:modifyFunc(1001)">修改</a>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>2014</td>
+                <td>06</td>
+                <td>1001</td>
+                <td>王府井店</td>
+                <td>100128</td>
+                <td>北京华亭雨中贸易有限公司</td>
+                <td></td>
+                <td></td>
+                <td>联营</td>
+                <td>保证金</td>
+                <td>0.00</td>
+                <td>录入</td>
+                <td>0201</td>
+                <td>现金</td>
+                <td>REN.HL</td>
+                <td>2014-02-28</td>
+                <td>LIU.FAN</td>
+                <td>2017-09-01</td>
+                <td>已收款</td>
+                <td class="text-right">
+                    <a href="javascript:modifyFunc(1002)">修改</a>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="20">
+                    <div class="pull-left">
+                        <a href="javascript:modifyFunc(1002)" type="button" class="btn btn-default">导出EXCEL</a>
+                    </div>
+                    <div class="pull-right page-box">
+                        <div class="pagination-info">共有1条，每页显示：20条</div>
+                        <ul class="pagination">
+                            <li class="disabled" page-index="1"><a>«</a></li>
+                            <li class="disabled" page-index="0"><a>‹</a></li>
+                            <li class="active" page-index="1"><a>1</a></li>
+                            <li page-index="2"><a>2</a></li>
+                            <li page-index="3"><a>3</a></li>
+                            <li page-index="4"><a>4</a></li>
+                            <li class="disabled" page-index="2"><a>›</a></li>
+                            <li class="disabled" page-index="1"><a>»</a></li>
+                        </ul>
+                        <div class="pagination-goto">
+                            <input type="text" class="ipt form-control" id="gotoPageNo">
+                            <button type="button" class="btn btn-default" id="goBtn">GO</button>
+                            <input type="hidden" id="totalCount" name="totalCount" value="100">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="mt clearfix">
+        <div class="page-tip">
+            <b>温馨提示：</b>
+            <p>• 原模板中“色系”列，不再需要填写；</p>
+            <p>• 原模板中尺码填写有三列“国标尺码、企业尺码1、企业尺码2”，现只保留一列“尺码”列。填写规则要认真查看供应商主数据采集模板中“主数据模板录入规则”哦。</p>
+            <p>• 请您每次填写新增货品信息时，一定要在供应商服务平台右上角“资料下载”中下载最新版供应商主数据采集模板填写。</p>
+        </div>
+    </div>
+    <div class="no-data-info" style="display:none"><i class="fa"></i><span class="ng-binding">没有查询到符合条件的结果，请尝试更改关键词或其它选项</span></div><!-- 当没有查询结果时显示 -->
+</div>
+<script src="../../js/jquery-1.8.3.min.js"></script>
+<script src="../../js/jquery.placeholder.min.js"></script>
+<script src="../../js/jquery.chosen.min.js"></script>
+<script src="../../js/layer/layer.js"></script>
+<script src="../../js/laydate/laydate.js"></script>
+<script src="../../js/main.js"></script>
+<script>
+    //导出
+    function modifyFunc(supplierID){
+        layer.open({
+            type: 1,
+            btn:['确定','取消'],
+            title: '提示',
+            shade: 0.6,
+            moveType: 1,
+            shift: -1,
+            content:'<div class="form-view alert-form-view">'+
+            '<div class="form-group">'+
+            '<label class="label" style="width: 200px;font-size: 14px;text-align: center;">是否确定导出EXCEL</label>'+
+            '</div>'+
+            '</div>',
+            yes: function(index, layero){
+                layer.msg('修改成功');
+                layer.close(index);
+            }
+        });
+    }
+    function confirmVerify(){
+        //后台返回提交结果 并执行提示词和关闭弹层
+        layer.msg('审核成功');
+    }
+    //时间
+    var start1 = {
+        elem: '#startDate1',
+        choose: function(datas){
+            end1.min = datas; //开始日选好后，重置结束日的最小日期
+            end1.start1 = datas //将结束日的初始值设定为开始日
+        }
+    };
+    var end1 = {
+        elem: '#endDate1',
+        choose: function(datas){
+            start1.max = datas; //结束日选好后，重置开始日的最大日期
+        }
+    };
+    laydate(start1);
+    laydate(end1);
+</script>
+</body>
+</html>

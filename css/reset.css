@@ -1,0 +1,56 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, figure, input, textarea, p, blockquote, th, td { padding: 0; margin: 0; }
+body { font: 400 12px/1.5 'microsoft yahei', tahoma, arial, \5b8b\4f53, sans-serif;}
+table { border-collapse: collapse; border-spacing: 0 }
+fieldset, img { vertical-align: middle; border: 0;}
+address, caption, cite, code, dfn, em, th, var { font-weight: normal; font-style: normal }
+strong, b { font-weight: bold; }
+ol, ul { list-style: none }
+caption, th { text-align: left }
+a { text-decoration: none; outline: none; color: #06c;}
+a:hover { color: #049;}
+h1, h2, h3, h4, h5, h6 { font-weight: 700; }
+h1 { font-size: 20px }
+h2 { font-size: 18px }
+h3 { font-size: 16px }
+h4 { font-size: 14px }
+h5 { font-size: 14px }
+h6 { font-size: 12px }
+h1,h2,h3 {margin-top: 20px; margin-bottom: 10px;}
+h4, h5, h6 { margin-top: 10px; margin-bottom: 10px;}
+q:before, q:after { content: '' }
+abbr, acronym { border: 0 }
+blockquote { color: #666; font-style: italic; }
+sup, sub { line-height: 0 }
+abbr, acronym { border-bottom: 1px dotted #666 }
+pre { white-space: pre; }
+pre, code, tt { font: 12px 'andale mono', 'lucida console', monospace; line-height: 1.5 }
+.select,select { -webkit-box-sizing: content-box; -moz-box-sizing: content-box; -ms-box-sizing: content-box; -o-box-sizing: content-box; box-sizing: content-box;}
+
+
+.clearfix { clear:both; *zoom:1}
+.clearfix:after { content:'\20'; clear:both; *zoom:1; display:block; height:0}
+::-webkit-selection { background: #f04e23; color: #fff; }
+::-moz-selection { background: #f04e23; color: #fff; }
+::-ms-selection { background: #f04e23; color: #fff; }
+::-o-selection { background: #f04e23; color: #fff; }
+::selection { background: #f04e23; color: #fff; }
+
+.mt	{ margin-top: 8px; }
+.mr { margin-right: 8px; }
+.mb { margin-bottom: 8px; }
+.ml { margin-left: 8px; }
+.pt { padding-top: 8px; }
+.pr { padding-right: 8px; }
+.pb { padding-bottom: 8px; }
+.pl { padding-left: 8px; }
+.hr { display: block; clear: both; width: 100%; height: 1px; margin-top: 8px; margin-bottom: 16px; background: #999;}
+.pull-left { float: left !important; }
+.pull-right { float: right !important; }
+.text-right { text-align: right; }
+.text-danger { color: #F00 !important; }
+.text-green { color: green }
+.text-red { color: red }
+.bg-danger { background: #ffeaea !important; }
+.text-gray { color: #999 !important;}
+a.disabled, input[disabled] { text-shadow: none; pointer-events: none; cursor: not-allowed; color: #bbb;}
+a.disabled:hover, input[disabled]:hover { color: #bbb;}
